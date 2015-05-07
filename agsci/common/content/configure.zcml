@@ -1,0 +1,57 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="agsci.common">
+
+    <include package="plone.behavior" file="meta.zcml" />
+
+    <!-- Behavior to include metadata fields -->
+
+    <plone:behavior
+        title="AgSci Folder Fields"
+        description="Include standard AgSci folder fields"
+        provides=".behaviors.container.IFolderFields"
+        for="plone.dexterity.interfaces.IDexterityContainer"
+        />
+
+    <!-- Behavior to include folder columns field -->
+
+    <plone:behavior
+        title="Tile Folder fields"
+        description="Configuration for tile folder view"
+        provides=".behaviors.container.ITileFolder"
+        for="plone.dexterity.interfaces.IDexterityContainer"
+        />
+
+    <!-- Behavior to enable the local search viewlet -->
+
+    <plone:behavior
+        title="Local search"
+        description="Configure a context-specific search"
+        provides=".behaviors.search.ILocalSearch"
+        for="plone.dexterity.interfaces.IDexterityContainer"
+        />
+
+    <!-- Vocabularies  -->
+
+    <utility
+        name="agsci.common.TileFolderColumns"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+        component=".vocabulary.TileFolderColumnsVocabularyFactory"
+    />
+
+    <utility
+        name="agsci.common.SearchTypes"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+        component=".vocabulary.SearchTypesVocabularyFactory"
+    />
+    
+    <utility
+        name="agsci.common.MatchAttributes"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+        component=".vocabulary.MatchAttributesVocabularyFactory"
+    />
+
+</configure>

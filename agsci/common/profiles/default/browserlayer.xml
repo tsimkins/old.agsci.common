@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<layers>
+ <layer name="agsci.common"
+    interface="agsci.common.browser.interfaces.IThemeSpecific" />
+</layers>

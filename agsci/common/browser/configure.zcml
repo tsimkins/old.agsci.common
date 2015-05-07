@@ -1,0 +1,67 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="agsci.common">
+
+    <!-- Interfaces -->
+
+   <interface
+        interface=".interfaces.IThemeSpecific"
+        type="zope.publisher.interfaces.browser.IBrowserSkinType"
+        name="agsci.common"
+        />
+
+    <!-- Browser Views -->
+
+    <browser:page
+        name="folder_summary_view"
+        for="plone.dexterity.interfaces.IDexterityContainer"
+        class=".views.FolderView"
+        template="templates/views/folder_summary_view.pt"
+        permission="zope2.View"
+        layer=".interfaces.IThemeSpecific"
+        />
+
+    <browser:page
+        name="folder_listing"
+        for="plone.dexterity.interfaces.IDexterityContainer"
+        class=".views.FolderView"
+        template="templates/views/folder_listing.pt"
+        permission="zope2.View"
+        layer=".interfaces.IThemeSpecific"
+        />
+
+    <browser:page
+        name="view"
+        for="plone.dexterity.interfaces.IDexterityContainer"
+        class=".views.FolderView"
+        template="templates/views/folder_summary_view.pt"
+        permission="zope2.View"
+        layer=".interfaces.IThemeSpecific"
+        />
+
+    <!-- Viewlets -->
+
+    <browser:viewlet
+        name="agsci.common.localsearch"
+        class=".viewlets.LocalSearchViewlet"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        template="templates/viewlets/localsearch.pt"
+        permission="zope2.View"
+        for="..content.behaviors.search.ILocalSearch"
+        layer=".interfaces.IThemeSpecific"
+    />
+
+    <browser:page
+        name="search"
+        class=".views.Search"
+        permission="zope2.View"
+        for="*"
+        layer=".interfaces.IThemeSpecific"
+        template="templates/views/search.pt"
+        />
+
+
+</configure>

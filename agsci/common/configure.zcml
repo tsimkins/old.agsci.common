@@ -1,5 +1,7 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:monkey="http://namespaces.plone.org/monkey"
            i18n_domain="agsci.common">
 
     <genericsetup:registerProfile
@@ -9,5 +11,31 @@
         description=""
         provides="Products.GenericSetup.interfaces.EXTENSION"
     />
+
+    <include package=".browser" />
+    <include package=".content" />
+
+    <browser:resourceDirectory
+        name="agsci.common"
+        directory="resources" />
+
+    <!-- Make get_data for collective.elasticindex pull catalog indexes/metadata  -->
+    
+    <monkey:patch
+        description="Use catalog indexes/metadata for collective.elasticindex"
+        module="collective.elasticindex.changes"
+        replacement=".patch.get_data"
+        original="get_data"
+        />
+
+    <!-- When collective.elasticindex creates an index, set the not_analyzed
+         attribute in the mapping  -->
+    
+    <monkey:patch
+        description="Set not_analyzed in create_index for collective.elasticindex"
+        module="collective.elasticindex.utils"
+        replacement=".patch.create_index"
+        original="create_index"
+        />
 
 </configure>

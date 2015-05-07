@@ -1,0 +1,103 @@
+$max_width: 1200px;
+$min_width: 350px;
+    
+body {
+    background-color: #333333;
+}
+
+#visual-portal-wrapper {
+    max-width: $max_width;
+    margin: 0 auto;
+}
+
+#portal-top,
+#portal-columns,
+#portal-footer-wrapper {
+    background-color: #FFFFFF;
+}
+
+#viewlet-above-content-body {
+    $leadimage_width: 350px;
+    $margin: 16px;
+    $leadimage_width_percent: ($margin + $leadimage_width)/$max_width;
+     
+    .leadimage {
+
+        float: right;    
+        width: $leadimage_width_percent*100%;
+        margin-left: ($margin/$max_width)*100%;
+        
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+#content-core {
+
+    $padding: 16px;
+    $margin: 8px;
+    $border: 1px;
+    $max_columns: 5;
+
+    .listItem {
+
+        background-color: #f0f0f0;
+
+        .listTitle {
+            font-weight: bold;
+            font-size: 1.25em;
+            margin-top: 0.25em;
+            margin-bottom: 0.125em;
+        }
+
+        .listTitle a {
+            border: none;
+        }
+
+        .listDescription {
+            margin-top: 0.25em;
+            margin-bottom: 0.125em;
+        }
+
+        .listLeadImage a,
+        .listLeadImage img {
+            border: none;
+        }
+
+        .listLeadImage img {
+            width: 100%;
+            height: auto;
+        }
+
+    }
+    
+    @for $i from 1 to $max_columns {
+        $c: 100/$i;
+        $block_width: ($c/100)*$max_width;
+        $cell_width: $block_width - 2*($padding+$margin);
+        $cell_width_percent: $cell_width/$max_width - (2*$border)/$min_width;
+        $margin_width_percent: ($margin/$max_width);
+        $padding_width_percent: ($padding/$max_width);
+        
+        .list-item-columns-#{$i} {
+            width: $cell_width_percent*100%;
+            float: left;
+            padding: 1.5em $padding_width_percent*100%;
+            border: $border #CCCCCC solid;
+            margin: 1.5em $margin_width_percent*100%;
+        }
+
+        .list-item-columns-#{$i}:nth-child(#{$i}n+1) {
+            clear: left;
+        }
+
+    }
+    
+    
+    
+    
+}
+
+
