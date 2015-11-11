@@ -1,8 +1,10 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+           xmlns:five="http://namespaces.zope.org/five"
            xmlns:browser="http://namespaces.zope.org/browser"
-           xmlns:monkey="http://namespaces.plone.org/monkey"
            i18n_domain="agsci.common">
+
+   <five:registerPackage package="." initialize=".initialize" />
 
     <genericsetup:registerProfile
         name="default"
