@@ -1,19 +1,4 @@
 <?xml version="1.0"?>
 <object name="portal_javascripts">
- <javascript id="++resource++agsci.common/js/jquery.tmpl.min.js"
-    cacheable="True" compression="safe" cookable="False"
-    enabled="True" expression="" inline="False" />
-
- <javascript id="++resource++agsci.common/js/elasticsearch.jquery.min.js"
-    cacheable="True" compression="safe" cookable="False"
-    enabled="True" expression="" inline="False" />
-
- <javascript id="++resource++agsci.common/js/jquery.serializejson.min.js"
-    cacheable="True" compression="safe" cookable="False"
-    enabled="True" expression="" inline="False" />
-
- <javascript id="++resource++agsci.common/js/jquery.plonecatalogjson.js"
-    cacheable="True" compression="safe" cookable="False"
-    enabled="True" expression="" inline="False" />
   
 </object>

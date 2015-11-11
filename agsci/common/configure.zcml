@@ -19,23 +19,4 @@
         name="agsci.common"
         directory="resources" />
 
-    <!-- Make get_data for collective.elasticindex pull catalog indexes/metadata  -->
-    
-    <monkey:patch
-        description="Use catalog indexes/metadata for collective.elasticindex"
-        module="collective.elasticindex.changes"
-        replacement=".patch.get_data"
-        original="get_data"
-        />
-
-    <!-- When collective.elasticindex creates an index, set the not_analyzed
-         attribute in the mapping  -->
-    
-    <monkey:patch
-        description="Set not_analyzed in create_index for collective.elasticindex"
-        module="collective.elasticindex.utils"
-        replacement=".patch.create_index"
-        original="create_index"
-        />
-
 </configure>
