@@ -41,6 +41,13 @@ body {
     $border: 1px;
     $max_columns: 5;
 
+    .documentPage {
+        border: 1px solid #666;
+        padding: 1.5em;
+        background-color: #f9f9f9;
+        margin: 1.5em 0;
+    }
+
     .listItem {
 
         background-color: #f0f0f0;
