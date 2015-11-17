@@ -20,17 +20,6 @@ def toISO(v):
 
     return None
 
-def getText(object):
-    if object.portal_type in ['File', 'Image', 'Link', 'FSDFacultyStaffDirectoryTool'] or object.portal_type.startswith('Form'):
-        text = ''
-    elif hasattr(object, 'getRawText'):
-        text = object.getRawText()
-    elif hasattr(object, 'getText'):
-        text = object.getText()
-    else:
-        text = ""
-    return text
-
 def encode_blob(f):
     data = getattr(f, 'data', None)
     if data:
@@ -47,4 +36,11 @@ def getContentType(i):
                 return v
     return None
             
-        
+def increaseHeadingLevel(text):
+    if '<h2' in text:
+        for i in reversed(range(1,6)):
+            from_header = "h%d" % i
+            to_header = "h%d" % (i+1)
+            text = text.replace("<%s" % from_header, "<%s" % to_header)
+            text = text.replace("</%s" % from_header, "</%s" % to_header)
+    return text
