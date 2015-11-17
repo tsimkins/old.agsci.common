@@ -11,15 +11,19 @@ body {
   background-color: #FFFFFF; }
 
 #viewlet-above-content-body .leadimage {
-  float: right;
-  width: 30.5%;
-  margin-left: 1.33333%; }
+  width: 100%; }
   #viewlet-above-content-body .leadimage img {
     width: 100%;
     height: auto; }
 
+#content-core img {
+  max-width: 100%; }
+#content-core .slideshow-item {
+  margin: 1em 0 2em;
+  padding: 1em;
+  border: 1px dashed #999999; }
 #content-core .documentPage {
-  border: 1px solid #666;
+  border: 1px solid #666666;
   padding: 1.5em;
   background-color: #f9f9f9;
   margin: 1.5em 0; }
