@@ -10,12 +10,15 @@ import urlparse
 from agsci.leadimage.content.behaviors import LeadImage
 from zope.publisher.interfaces import IPublishTraverse
 from zope.interface import implements
-from dicttoxml import dicttoxml
+import dicttoxml
+
+# Prevent debug messages in log
+dicttoxml.set_debug(False)
 
 first_cap_re = re.compile('(.)([A-Z][a-z]+)')
 all_cap_re = re.compile('([a-z0-9])([A-Z])')
 
-from ..utilities import toISO, getText, encode_blob
+from ..utilities import toISO, encode_blob
 
 class BaseView(BrowserView):
 
@@ -92,7 +95,6 @@ class BaseView(BrowserView):
             'getRawCommittees',
             'getRawDepartments',
             'getRawPeople',
-            'getRawRelatedItems',
             'getRawSpecialties',
             'getResearchTopics',
             'getSortableName',
@@ -115,6 +117,10 @@ class BaseView(BrowserView):
 
         excluded_fields = self.getExcludeFields()
 
+        data['people'] = {}
+        data['dates'] = {}
+        data['metadata'] = {}
+        
         # First pass: Adjust data if necessary
         for i in data.keys():
             if i in excluded_fields or not data.get(i):
@@ -122,20 +128,44 @@ class BaseView(BrowserView):
                 continue
 
             v = data[i]
-            
+
             if isinstance(v, DateTime):
                 data[i] = toISO(data[i])
             elif i == 'getClassificationNames':
                 data['directory_classifications'] = data[i]
                 del data[i]
             elif i == 'listCreators':
-                data['creators'] = data[i]
+                data['people']['creators'] = data[i]
                 del data[i]
+            elif i == 'listContributors':
+                data['people']['contributors'] = data[i]
+                del data[i]
+            elif i == 'getRawRelatedItems':
+                data['related_items'] = data[i]
+                del data[i]
+            elif i == 'getId':
+                data['short_name'] = data[i]
+                del data[i]
+            elif i == 'review_state':
+                data['workflow_state'] = data[i]
+                del data[i]
+            elif i == 'getRemoteUrl':
+                data['remote_url'] = data[i]
+                del data[i]
+            elif i in ('Category', 'Program', 'Topic', 'Subtopic'):
+                data['metadata'][i.lower()] = data[i]
+                del data[i]
+
             # XML type logic sees `zope.i18nmessageid.message.Message` as a list
             # and returns the type one letter at a time as a list.
             elif type(v).__name__ == 'Message':
                 data[i] = unicode(v)
-                
+
+            # Separate block (intentionally not an 'elif') that puts all the 
+            # date fields under a 'dates' structure.
+            if i in ('created', 'expires', 'effective', 'modified'):
+                data['dates'][i] = data[i]
+                del data[i]                
 
         # Second pass: Ensure keys are non-camel case lowercase                
         for i in data.keys():
@@ -153,7 +183,9 @@ class BaseView(BrowserView):
         # Object URL
         url = self.context.absolute_url()
         data['url'] = url
- 
+
+        # Lead Image
+         
         if data.get('hasLeadImage', False):
             img_field_name = 'leadimage'
             img_field = getattr(self.context, img_field_name, None)
@@ -161,28 +193,15 @@ class BaseView(BrowserView):
             (img_mimetype, img_data) = encode_blob(img_field)
 
             if img_data:
-                data['leadimage_data'] = img_data
-                data['leadimage_mimetype'] = img_mimetype
-                data['leadimage_caption'] = LeadImage(self.context).leadimage_caption
+                data['leadimage'] = {
+                    'data' : img_data,
+                    'mimetype' : img_mimetype,
+                    'caption' : LeadImage(self.context).leadimage_caption,
+                }
 
-        # Get the html and text of the content if the 'full' parameter is used
-        if self.request.form.get('full', None):
-            try:
-                html = getText(self.context)
-            except:
-                pass
-            else:    
-                if html:
-                    soup = BeautifulSoup(html)
-                    
-                    # Convert relative img src to full URL path
-                    for img in soup.findAll('img'):
-                        src = img.get('src')
-                        if src and not src.startswith('http'):
-                            img['src'] = urlparse.urljoin(url, src)
-                    
-                    data['html'] = repr(soup)
-                    data['text'] = self.html_to_text(html).strip()
+        # Related items
+        if hasattr(self.context, 'relatedItems'):
+            data['related_items'] = [x.to_object.UID() for x in self.context.relatedItems]
 
         return data
     
@@ -197,7 +216,7 @@ class BaseView(BrowserView):
         return json.dumps(self.getFilteredData(), indent=4)
 
     def getXML(self):
-        return dicttoxml(self.getFilteredData())
+        return dicttoxml.dicttoxml(self.getFilteredData(), custom_root='item')
 
     def __call__(self):
         data_format = self.getDataFormat()
@@ -211,6 +230,28 @@ class BaseView(BrowserView):
             xml = self.getXML()
             self.request.response.setHeader('Content-Type', 'application/xml')
             return xml
+
+class BaseContainerView(BaseView):
+
+    def getContents(self):
+        return self.context.listFolderContents()
+
+    def getData(self, recursive=True):
+        data = self.getBaseData()
+
+        if recursive:
+            contents = self.getContents()
+            
+            if contents:
+                data['contents'] = []
+                
+                for o in contents:
+    
+                    api_data = o.restrictedTraverse('@@api')
+    
+                    data['contents'].append(api_data.getFilteredData(recursive=False))
+
+        return data
 
 def getAPIData(object_url):
         
