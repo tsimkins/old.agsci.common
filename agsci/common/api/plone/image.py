@@ -4,7 +4,7 @@ from agsci.common.utilities import encode_blob
 class ImageView(BaseView):
 
     def getData(self, recursive=True):
-        data = self.getBaseData()
+        data = super(ImageView, self).getData(recursive=recursive)
 
         img_field = self.context.getFile()
 

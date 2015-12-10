@@ -177,7 +177,7 @@ class BaseView(BrowserView):
 
         return data
 
-    def getBaseData(self):
+    def getData(self, recursive=True):
         data = self.getCatalogData()
 
         # Object URL
@@ -205,9 +205,6 @@ class BaseView(BrowserView):
 
         return data
     
-    def getData(self, recursive=True):
-        return self.getBaseData()
-
     def getFilteredData(self, recursive=True):
         data = self.getData(recursive=recursive)
         return self.filterData(data)        
@@ -237,7 +234,7 @@ class BaseContainerView(BaseView):
         return self.context.listFolderContents()
 
     def getData(self, recursive=True):
-        data = self.getBaseData()
+        data = super(BaseContainerView, self).getData(recursive=recursive)
 
         if recursive:
             contents = self.getContents()
