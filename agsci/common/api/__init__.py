@@ -1,3 +1,4 @@
+from Acquisition import aq_base
 from BeautifulSoup import BeautifulSoup
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
@@ -200,8 +201,12 @@ class BaseView(BrowserView):
                 }
 
         # Related items
-        if hasattr(self.context, 'relatedItems'):
-            data['related_items'] = [x.to_object.UID() for x in self.context.relatedItems]
+        # Remove acquisition wrapping, since otherwise this will also return 
+        # the parent item's related items.
+        aq_base_context = aq_base(self.context)
+        
+        if hasattr(aq_base_context, 'relatedItems'):
+            data['related_items'] = [x.to_object.UID() for x in aq_base_context.relatedItems]
 
         return data
     
