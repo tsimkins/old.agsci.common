@@ -120,8 +120,16 @@ class BaseView(BrowserView):
 
         data['people'] = {}
         data['dates'] = {}
-        data['metadata'] = {}
         
+        # Human to Magento metadata mapping
+        h2m = {
+                'Category': 'category_level_1', 
+                'Topic': 'category_level_2', 
+                'Program': 'category_level_3', 
+                'Subtopic': 'filters'
+        }
+        
+                
         # First pass: Adjust data if necessary
         for i in data.keys():
             if i in excluded_fields or not data.get(i):
@@ -153,8 +161,25 @@ class BaseView(BrowserView):
             elif i == 'getRemoteUrl':
                 data['remote_url'] = data[i]
                 del data[i]
-            elif i in ('Category', 'Program', 'Topic', 'Subtopic'):
-                data['metadata'][i.lower()] = data[i]
+            elif i in h2m.keys():
+
+                # Only create the metadata structure if our item has one of the
+                # metadata values.  This contains a branch for Plone and a
+                # branch for Magento, since the values are the same, but the
+                # terminology is different.
+                
+                if not data.has_key('metadata'):            
+                    data['metadata'] = {
+                        'plone' : {},
+                        'magento' : {},
+                    }
+                
+                # Map Plone key to Magento key
+                magento_key = h2m.get(i).lower()
+                
+                # Populate values and delete original key
+                data['metadata']['plone'][i.lower()] = data[i]
+                data['metadata']['magento'][magento_key] = data[i]
                 del data[i]
 
             # XML type logic sees `zope.i18nmessageid.message.Message` as a list
