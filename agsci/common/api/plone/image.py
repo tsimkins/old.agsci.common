@@ -3,12 +3,12 @@ from agsci.common.utilities import encode_blob
 
 class ImageView(BaseView):
 
-    def getData(self, recursive=True):
-        data = super(ImageView, self).getData(recursive=recursive)
+    def getData(self):
+        data = super(ImageView, self).getData()
 
         img_field = self.context.getFile()
 
-        (img_mimetype, img_data) = encode_blob(img_field)
+        (img_mimetype, img_data) = encode_blob(img_field, self.showBinaryData)
 
         if img_data:
             data['data'] = img_data

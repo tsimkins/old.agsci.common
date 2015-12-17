@@ -20,10 +20,12 @@ def toISO(v):
 
     return None
 
-def encode_blob(f):
+def encode_blob(f, show_data=True):
     data = getattr(f, 'data', None)
     if data:
-        return (getContentType(f), base64.b64encode(data))
+        if show_data:
+            return (getContentType(f), base64.b64encode(data))
+        return (getContentType(f), '')
     return (None, None)
 
 def getContentType(i):

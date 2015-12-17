@@ -29,6 +29,20 @@ class BaseView(BrowserView):
     valid_data_formats = ['json', 'xml']
     default_data_format = 'xml'        
 
+    # Check if we're recursive based on URL parameter
+    # Defaults to True
+    @property
+    def isRecursive(self):
+        v = self.request.get('recursive', 'True')
+        return not (v.lower() in ('false', '0'))
+
+    # Check if we're showing binary data
+    # Defaults to True
+    @property
+    def showBinaryData(self):
+        v = self.request.get('bin', 'True')
+        return not (v.lower() in ('false', '0'))
+
     def getDataFormat(self):
 
         if self.data_format and self.data_format in self.valid_data_formats:
@@ -203,7 +217,8 @@ class BaseView(BrowserView):
 
         return data
 
-    def getData(self, recursive=True):
+    def getData(self):
+
         data = self.getCatalogData()
 
         # Object URL
@@ -216,7 +231,7 @@ class BaseView(BrowserView):
             img_field_name = 'leadimage'
             img_field = getattr(self.context, img_field_name, None)
 
-            (img_mimetype, img_data) = encode_blob(img_field)
+            (img_mimetype, img_data) = encode_blob(img_field, self.showBinaryData)
 
             if img_data:
                 data['leadimage'] = {
@@ -235,8 +250,8 @@ class BaseView(BrowserView):
 
         return data
     
-    def getFilteredData(self, recursive=True):
-        data = self.getData(recursive=recursive)
+    def getFilteredData(self):
+        data = self.getData()
         return self.filterData(data)        
 
     def getJSON(self):
@@ -258,15 +273,22 @@ class BaseView(BrowserView):
             self.request.response.setHeader('Content-Type', 'application/xml')
             return xml
 
+    # Handle HEAD request so testing the connection in Jitterbit doesn't fail
+    # From plone.namedfile.scaling
+    def HEAD(self, REQUEST, RESPONSE=None):
+        return ''
+
+    HEAD.__roles__ = ('Anonymous',)
+
 class BaseContainerView(BaseView):
 
     def getContents(self):
         return self.context.listFolderContents()
 
-    def getData(self, recursive=True):
-        data = super(BaseContainerView, self).getData(recursive=recursive)
+    def getData(self):
+        data = super(BaseContainerView, self).getData()
 
-        if recursive:
+        if self.isRecursive:
             contents = self.getContents()
             
             if contents:
@@ -276,7 +298,7 @@ class BaseContainerView(BaseView):
     
                     api_data = o.restrictedTraverse('@@api')
     
-                    data['contents'].append(api_data.getFilteredData(recursive=False))
+                    data['contents'].append(api_data.getFilteredData())
 
         return data
 

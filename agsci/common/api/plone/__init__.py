@@ -3,9 +3,9 @@ from Products.CMFCore.utils import getToolByName
 
 class PloneSiteView(BaseView):
 
-    def getData(self, recursive=True):
+    def getData(self):
 
-        uid = self.request.get('UID', None)
+        uid = self.request.get('UID', self.request.get('uid', None))
         
         if uid:
             portal_catalog = getToolByName(self.context, 'portal_catalog')
