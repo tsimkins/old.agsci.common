@@ -45,4 +45,14 @@
         layer="..browser.interfaces.IThemeSpecific"
         />
 
+    <!-- Dexterity Person -->
+
+    <browser:page
+        for="..content.person.IPerson"
+        name="api"
+        class=".person.PersonView"
+        permission="zope2.View"
+        layer="..browser.interfaces.IThemeSpecific"
+        />
+
 </configure>
