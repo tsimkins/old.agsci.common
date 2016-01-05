@@ -138,14 +138,20 @@ class BaseView(BrowserView):
         # Human to Magento metadata mapping
         h2m = {
                 'Category': 'category_level_1', 
-                'Topic': 'category_level_2', 
-                'Program': 'category_level_3', 
+                'Program': 'category_level_2', 
+                'Topic': 'category_level_3', 
                 'Subtopic': 'filters'
         }
         
                 
         # First pass: Adjust data if necessary
         for i in data.keys():
+        
+            # Skip custom data structure keys
+            if i in ('people', 'dates'):
+                continue
+
+            # Remove Excluded and empty fields
             if i in excluded_fields or not data.get(i):
                 del data[i]
                 continue
@@ -154,9 +160,6 @@ class BaseView(BrowserView):
 
             if isinstance(v, DateTime):
                 data[i] = toISO(data[i])
-            elif i == 'getClassificationNames':
-                data['directory_classifications'] = data[i]
-                del data[i]
             elif i == 'listCreators':
                 data['people']['creators'] = data[i]
                 del data[i]
