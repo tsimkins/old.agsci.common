@@ -43,7 +43,6 @@ class SearchTypesVocabulary(object):
 SearchTypesVocabularyFactory = SearchTypesVocabulary()
 
 
-
 # Attributes to match on local search
 class MatchAttributesVocabulary(object):
 

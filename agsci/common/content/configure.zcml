@@ -34,6 +34,14 @@
         for="plone.dexterity.interfaces.IDexterityContainer"
         />
 
+    <!-- Adapters -->
+    
+    <adapter 
+        for=".person.IPerson"
+        provides=".person.ITitleFromPersonUserId"
+        factory=".person.TitleFromPersonUserId"
+    />
+
     <!-- Vocabularies  -->
 
     <utility
@@ -53,5 +61,22 @@
         provides="zope.schema.interfaces.IVocabularyFactory"
         component=".vocabulary.MatchAttributesVocabularyFactory"
     />
+    
+    <utility
+        name="agsci.common.person.classifications"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+        component=".vocabulary.person.ClassificationsVocabularyFactory"
+    />
 
+    <utility
+        name="agsci.common.person.states"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+        component=".vocabulary.person.StatesVocabularyFactory"
+    />
+
+    <utility
+        name="agsci.common.person.counties"
+        provides="zope.schema.interfaces.IVocabularyFactory"
+        component=".vocabulary.person.CountiesVocabularyFactory"
+    />
 </configure>
