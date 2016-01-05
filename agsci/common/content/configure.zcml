@@ -7,13 +7,12 @@
 
     <include package="plone.behavior" file="meta.zcml" />
 
-    <!-- Behavior to include metadata fields -->
+    <!-- Behavior to include folder fields -->
 
     <plone:behavior
         title="AgSci Folder Fields"
         description="Include standard AgSci folder fields"
         provides=".behaviors.container.IFolderFields"
-        for="plone.dexterity.interfaces.IDexterityContainer"
         />
 
     <!-- Behavior to include folder columns field -->
@@ -22,7 +21,6 @@
         title="Tile Folder fields"
         description="Configuration for tile folder view"
         provides=".behaviors.container.ITileFolder"
-        for="plone.dexterity.interfaces.IDexterityContainer"
         />
 
     <!-- Behavior to enable the local search viewlet -->
@@ -31,7 +29,6 @@
         title="Local search"
         description="Configure a context-specific search"
         provides=".behaviors.search.ILocalSearch"
-        for="plone.dexterity.interfaces.IDexterityContainer"
         />
 
     <!-- Adapters -->
