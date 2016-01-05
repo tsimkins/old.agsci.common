@@ -6,6 +6,14 @@ from zope import schema
 from zope.component import adapter
 from zope.interface import provider, implementer
 
+# Set up fields for re-use in API output
+
+contact_fields = ['email_address', 'venue', 'office_address', 'office_city', 'office_state', 'office_zip_code', 'office_phone', 'fax_number', ]
+
+professional_fields = ['classifications', 'counties', 'job_titles', 'biography', 'areas_expertise', 'education', ]
+
+social_media_fields = ['twitter_url', 'facebook_url', 'linkedin_url', 'google_plus_url', ]
+
 @provider(IFormFieldProvider)
 class IPerson(model.Schema):
 
@@ -14,19 +22,19 @@ class IPerson(model.Schema):
     model.fieldset(
         'contact',
         label=_(u'Contact Information'),
-        fields=['email_address', 'venue', 'office_address', 'office_city', 'office_state', 'office_zip_code', 'office_phone', 'fax_number', 'cell_phone', ],
+        fields=contact_fields,
     )
     
     model.fieldset(
         'professional',
         label=_(u'Professional Information'),
-        fields=['classifications', 'counties', 'job_titles', 'biography', 'areas_expertise', 'websites', 'education', ],
+        fields=professional_fields,
     )
 
     model.fieldset(
         'social-media',
         label=_(u'Social Media'),
-        fields=['twitter_url', 'facebook_url', 'linkedin_url', 'google_plus_url', 'primary_profile'],
+        fields=social_media_fields,
     )
 
     # Fields
@@ -104,11 +112,6 @@ class IPerson(model.Schema):
         required=False,
     )
 
-    cell_phone = schema.TextLine(
-        title=_(u"Cell Phone"),
-        required=False,
-    )
-
     job_titles = schema.List(
         title=_(u"Job Titles"),
         value_type=schema.TextLine(required=True),
@@ -126,12 +129,6 @@ class IPerson(model.Schema):
         required=False,
     )
 
-    websites = schema.List(
-        title=_(u"Websites"),
-        value_type=schema.TextLine(required=True),
-        required=False,
-    )
-
     counties = schema.List(
         title=_(u"Counties"),
         value_type=schema.Choice(vocabulary="agsci.common.person.counties"),
@@ -141,11 +138,6 @@ class IPerson(model.Schema):
     areas_expertise = schema.List(
         title=_(u"Areas of Expertise"),
         value_type=schema.TextLine(required=True),
-        required=False,
-    )
-
-    primary_profile = schema.TextLine(
-        title=_(u"Primary Profile URL"),
         required=False,
     )
 
