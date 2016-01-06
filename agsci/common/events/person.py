@@ -2,15 +2,15 @@
 
 def onPersonEdit(context, event):
 
-    user_id = getattr(context, 'user_id', '')
+    username = getattr(context, 'username', '')
     
-    if user_id:
+    if username:
     
-        user_id = user_id.encode('utf-8')
+        username = username.encode('utf-8')
     
-        if user_id != context.getId():
+        if username != context.getId():
         
             parent = context.aq_parent
             
-            if user_id not in parent.objectIds():
-                parent.manage_renameObjects(ids=[context.getId()], new_ids=[user_id])
+            if username not in parent.objectIds():
+                parent.manage_renameObjects(ids=[context.getId()], new_ids=[username])

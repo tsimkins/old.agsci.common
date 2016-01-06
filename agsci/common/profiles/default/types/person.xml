@@ -23,6 +23,7 @@
  <property name="behaviors">
   <element value="agsci.atlas.content.behaviors.IAtlasMetadata" />
   <element value="agsci.leadimage.content.behaviors.ILeadImage" />
+  <element value="dexterity.membrane.behavior.user.IMembraneUser" />
  </property>
   
   <property name="schema">agsci.common.content.person.IPerson</property>

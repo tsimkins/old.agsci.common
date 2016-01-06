@@ -28,7 +28,7 @@ class PersonView(BaseView):
             v = getattr(self.context, i, None)
             
             # Present biography as raw text
-            if i in ('biography', ):
+            if i in ('bio', ):
                 v = v.raw
 
             # Handle values, if they exist

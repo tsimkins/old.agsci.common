@@ -1,21 +1,23 @@
 from agsci.common import AgSciMessageFactory as _
 from plone.app.textfield import RichText
 from plone.autoform.interfaces import IFormFieldProvider
+from plone.autoform import directives as form
 from plone.supermodel import model
 from zope import schema
 from zope.component import adapter
 from zope.interface import provider, implementer
+from dexterity.membrane.content.member import IMember
 
 # Set up fields for re-use in API output
 
-contact_fields = ['email_address', 'venue', 'office_address', 'office_city', 'office_state', 'office_zip_code', 'office_phone', 'fax_number', ]
+contact_fields = ['email', 'venue', 'office_address', 'office_city', 'office_state', 'office_zip_code', 'office_phone', 'fax_number', ]
 
-professional_fields = ['classifications', 'counties', 'job_titles', 'biography', 'areas_expertise', 'education', ]
+professional_fields = ['classifications', 'counties', 'job_titles', 'bio', 'areas_expertise', 'education', ]
 
 social_media_fields = ['twitter_url', 'facebook_url', 'linkedin_url', 'google_plus_url', ]
 
 @provider(IFormFieldProvider)
-class IPerson(model.Schema):
+class IPerson(IMember):
 
     # Fieldsets
 
@@ -37,9 +39,11 @@ class IPerson(model.Schema):
         fields=social_media_fields,
     )
 
+    form.omitted('homepage')
+
     # Fields
 
-    user_id = schema.TextLine(
+    username = schema.TextLine(
         title=_(u"Penn State Username"),
         description=_(u"Of format 'xyz123'"),
         required=True,
@@ -69,11 +73,6 @@ class IPerson(model.Schema):
         title=_(u"Classifications"),
         required=True,
         value_type=schema.Choice(vocabulary="agsci.common.person.classifications"),
-    )
-
-    email_address = schema.TextLine(
-        title=_(u"Email"),
-        required=True,
     )
 
     venue = schema.TextLine(
@@ -116,11 +115,6 @@ class IPerson(model.Schema):
         title=_(u"Job Titles"),
         value_type=schema.TextLine(required=True),
         required=True,
-    )
-
-    biography = RichText(
-        title=_(u"Biography"),
-        required=False,
     )
 
     education = schema.List(
@@ -185,7 +179,6 @@ class Person(Item):
     def setTitle(self, value):
         return
 
-
 class ITitleFromPersonUserId(INameFromTitle):
     def title():
         """Return a processed title"""
@@ -198,4 +191,4 @@ class TitleFromPersonUserId(object):
 
     @property
     def title(self):
-        return self.context.user_id
+        return self.context.username
