@@ -28,7 +28,7 @@
     <!-- Plone Image -->
 
     <browser:page
-        for="Products.ATContentTypes.interfaces.image.IATImage"
+        for=" plone.app.contenttypes.interfaces.IImage"
         name="api"
         class=".plone.image.ImageView"
         permission="zope2.View"
@@ -38,7 +38,7 @@
     <!-- Plone File -->
 
     <browser:page
-        for="Products.ATContentTypes.interfaces.file.IATFile"
+        for=" plone.app.contenttypes.interfaces.IFile"
         name="api"
         class=".plone.file.FileView"
         permission="zope2.View"

@@ -2,4 +2,4 @@ from image import ImageView
 
 class FileView(ImageView):
 
-   pass
+    binary_data_fieldname = 'file'
