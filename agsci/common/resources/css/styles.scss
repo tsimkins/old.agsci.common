@@ -109,10 +109,14 @@ body {
         }
 
     }
-    
-    
-    
-    
 }
 
 
+#content {
+    ul.documentDescription {
+        
+        li {
+            list-style-type: none;
+        }
+    }
+}

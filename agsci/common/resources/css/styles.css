@@ -78,4 +78,7 @@ body {
 #content-core .list-item-columns-4:nth-child(4n+1) {
   clear: left; }
 
+#content ul.documentDescription li {
+  list-style-type: none; }
+
 /*# sourceMappingURL=styles.css.map */
