@@ -25,32 +25,22 @@
         layer="..browser.interfaces.IThemeSpecific"
         />
 
-    <!-- Plone Image -->
+    <!-- Dexterity Image -->
 
     <browser:page
-        for=" plone.app.contenttypes.interfaces.IImage"
+        for="plone.app.contenttypes.interfaces.IImage"
         name="api"
         class=".plone.image.ImageView"
         permission="zope2.View"
         layer="..browser.interfaces.IThemeSpecific"
         />
 
-    <!-- Plone File -->
+    <!-- Dexterity File -->
 
     <browser:page
-        for=" plone.app.contenttypes.interfaces.IFile"
+        for="plone.app.contenttypes.interfaces.IFile"
         name="api"
         class=".plone.file.FileView"
-        permission="zope2.View"
-        layer="..browser.interfaces.IThemeSpecific"
-        />
-
-    <!-- Dexterity Person -->
-
-    <browser:page
-        for="..content.person.IPerson"
-        name="api"
-        class=".person.PersonView"
         permission="zope2.View"
         layer="..browser.interfaces.IThemeSpecific"
         />

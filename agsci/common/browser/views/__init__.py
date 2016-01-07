@@ -22,12 +22,6 @@ except ImportError:
     def PdfFileReader(*args, **kwargs):
         return None
 
-class IPersonView(Interface):
-    pass
-    
-class PersonView(BrowserView):
-    pass
-
 class IFolderView(Interface):
     pass
     

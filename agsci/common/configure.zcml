@@ -17,7 +17,6 @@
     <include package=".browser" />
     <include package=".content" />
     <include package=".api" />
-    <include package=".events" />
     
     <browser:resourceDirectory
         name="agsci.common"

@@ -42,15 +42,6 @@
         layer=".interfaces.IThemeSpecific"
         />
 
-    <browser:page
-        name="view"
-        for="..content.person.IPerson"
-        class=".views.PersonView"
-        template="templates/views/person.pt"
-        permission="zope2.View"
-        layer=".interfaces.IThemeSpecific"
-        />
-
     <!-- Viewlets -->
 
     <browser:viewlet
