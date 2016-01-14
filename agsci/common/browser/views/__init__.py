@@ -1,3 +1,4 @@
+from plone.event.interfaces import IEvent
 from Products.Five import BrowserView
 from zope.interface import implements, Interface
 from RestrictedPython.Utilities import same_type as _same_type
@@ -241,6 +242,13 @@ class FolderView(BrowserView):
     def getTileColumns(self):
         return getattr(self.context, 'tile_folder_columns', '3')
 
+    def isEvent(self, item):
+        
+        if getattr(item, 'getObject', False):
+            item = item.getObject()
+
+        return IEvent.providedBy(item)
+        
 class Search(_Search):
 
     def filter_query(self, query):
