@@ -26,6 +26,9 @@ setup(name='agsci.common',
     zip_safe=False,
     install_requires=[
       'setuptools',
+      'agsci.leadimage',
+      'Products.WebServerAuth',
+      'agsci.person',
       # -*- Extra requirements: -*-
       ],
     entry_points="""
