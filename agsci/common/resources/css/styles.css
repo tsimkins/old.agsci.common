@@ -11,7 +11,8 @@ body {
   background-color: #FFFFFF; }
 
 #viewlet-above-content-body .leadimage {
-  width: 100%; }
+  float: right;
+  width: 25%; }
   #viewlet-above-content-body .leadimage img {
     width: 100%;
     height: auto; }
