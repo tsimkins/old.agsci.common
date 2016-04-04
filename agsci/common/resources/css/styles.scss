@@ -18,18 +18,23 @@ body {
 
 #viewlet-above-content-body {
     $leadimage_width: 350px;
-    $margin: 16px;
-    $leadimage_width_percent: ($margin + $leadimage_width)/$max_width;
+    $leadimage_width_percent: 100%*($leadimage_width/$max_width);
      
     .leadimage {
-
-        float: right;
-        width: 25%;
+        margin: 1em 0;
+        width: $leadimage_width_percent;
         
         img {
             width: 100%;
             height: auto;
+            float: none;
         }
+    }
+    
+    .leadimage-full {
+        margin: 1em 0;
+        float: none;
+        width: 100%;
     }
 }
 

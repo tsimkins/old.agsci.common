@@ -11,11 +11,16 @@ body {
   background-color: #FFFFFF; }
 
 #viewlet-above-content-body .leadimage {
-  float: right;
-  width: 25%; }
+  margin: 1em 0;
+  width: 29.16667%; }
   #viewlet-above-content-body .leadimage img {
     width: 100%;
-    height: auto; }
+    height: auto;
+    float: none; }
+#viewlet-above-content-body .leadimage-full {
+  margin: 1em 0;
+  float: none;
+  width: 100%; }
 
 #content-core img {
   max-width: 100%; }
