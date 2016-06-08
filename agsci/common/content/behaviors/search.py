@@ -6,7 +6,6 @@ from plone.autoform import directives as form
 from zope import schema
 from zope.schema.interfaces import IContextAwareDefaultFactory
 from ..vocabulary import getTypes
-from agsci.atlas.content import metadata_content_types
 
 @provider(IContextAwareDefaultFactory)
 def defaultSearchTypes(context):
