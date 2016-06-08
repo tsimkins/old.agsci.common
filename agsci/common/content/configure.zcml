@@ -45,10 +45,4 @@
         component=".vocabulary.SearchTypesVocabularyFactory"
     />
     
-    <utility
-        name="agsci.common.MatchAttributes"
-        provides="zope.schema.interfaces.IVocabularyFactory"
-        component=".vocabulary.MatchAttributesVocabularyFactory"
-    />
-    
 </configure>

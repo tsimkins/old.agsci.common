@@ -3,7 +3,6 @@ from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 from Products.CMFCore.utils import getToolByName
 from zope.interface import directlyProvides
 from zope.interface import implements
-from agsci.atlas.content import metadata_content_types
 
 # Number of columns in tile folder view
 
@@ -41,17 +40,3 @@ class SearchTypesVocabulary(object):
     
 
 SearchTypesVocabularyFactory = SearchTypesVocabulary()
-
-
-# Attributes to match on local search
-class MatchAttributesVocabulary(object):
-
-    implements(IVocabularyFactory)
-
-    def __call__(self, context):
-
-        return SimpleVocabulary(
-            [SimpleTerm(x, title=x) for x in metadata_content_types]
-        )
-
-MatchAttributesVocabularyFactory = MatchAttributesVocabulary()

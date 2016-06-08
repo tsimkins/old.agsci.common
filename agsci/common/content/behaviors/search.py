@@ -14,21 +14,13 @@ def defaultSearchTypes(context):
 
     return list(set(types) & set(getTypes(context)))
 
-@provider(IContextAwareDefaultFactory)
-def defaultMatchAttributes(context):
-
-    if context.Type() in metadata_content_types:
-        return context.Type()
-    else:
-        return None
-
 @provider(IFormFieldProvider)
 class ILocalSearch(model.Schema):
 
     model.fieldset(
         'search_settings',
         label=_(u'Search Settings'),
-        fields=['enable_localsearch', 'search_types', 'match_attributes'],
+        fields=['enable_localsearch', 'search_types'],
     )
 
     enable_localsearch = schema.Bool(
@@ -42,12 +34,4 @@ class ILocalSearch(model.Schema):
         description=_(u""),
         value_type=schema.Choice(vocabulary="agsci.common.SearchTypes"),
         defaultFactory=defaultSearchTypes,
-    )
-
-    match_attributes = schema.Choice(
-        title=_(u"Match Attributes"),
-        description=_(u""),
-        vocabulary="agsci.common.MatchAttributes",
-        defaultFactory=defaultMatchAttributes,
-        required=False,
     )
