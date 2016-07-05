@@ -1,6 +1,6 @@
 $max_width: 1200px;
 $min_width: 350px;
-    
+
 body {
     background-color: #333333;
 }
@@ -8,121 +8,141 @@ body {
 #visual-portal-wrapper {
     max-width: $max_width;
     margin: 0 auto;
-}
 
-#portal-top,
-#portal-columns,
-#portal-footer-wrapper {
-    background-color: #FFFFFF;
-}
+    #portal-top,
+    #portal-columns,
+    #portal-footer-wrapper {
+        background-color: #FFFFFF;
+    }
 
-#viewlet-above-content-body {
-    $leadimage_width: 350px;
-    $leadimage_width_percent: 100%*($leadimage_width/$max_width);
-     
-    .leadimage {
-        margin: 1em 0;
-        width: $leadimage_width_percent;
-        
-        img {
-            width: 100%;
-            height: auto;
+    #viewlet-above-content-body {
+        $leadimage_width: 350px;
+        $leadimage_width_percent: 100%*($leadimage_width/$max_width);
+
+        .leadimage {
+            margin: 1em 0;
+            width: $leadimage_width_percent;
+
+            img {
+                width: 100%;
+                height: auto;
+                float: none;
+            }
+        }
+
+        .leadimage-full {
+            margin: 1em 0;
             float: none;
-        }
-    }
-    
-    .leadimage-full {
-        margin: 1em 0;
-        float: none;
-        width: 100%;
-    }
-}
-
-#content-core {
-
-    $padding: 16px;
-    $margin: 8px;
-    $border: 1px;
-    $max_columns: 5;
-
-    img {
-        max-width: 100%;
-    }
-
-    .slideshow-item {
-        margin: 1em 0 2em;
-        padding: 1em;
-        border: 1px dashed #999999;
-    }
-
-    .documentPage {
-        border: 1px solid #666666;
-        padding: 1.5em;
-        background-color: #f9f9f9;
-        margin: 1.5em 0;
-    }
-
-    .listItem {
-
-        background-color: #f0f0f0;
-
-        .listTitle {
-            font-weight: bold;
-            font-size: 1.25em;
-            margin-top: 0.25em;
-            margin-bottom: 0.125em;
-        }
-
-        .listTitle a {
-            border: none;
-        }
-
-        .listDescription {
-            margin-top: 0.25em;
-            margin-bottom: 0.125em;
-        }
-
-        .listLeadImage a,
-        .listLeadImage img {
-            border: none;
-        }
-
-        .listLeadImage img {
             width: 100%;
-            height: auto;
         }
-
     }
-    
-    @for $i from 1 to $max_columns {
-        $c: 100/$i;
-        $block_width: ($c/100)*$max_width;
-        $cell_width: $block_width - 2*($padding+$margin);
-        $cell_width_percent: $cell_width/$max_width - (2*$border)/$min_width;
-        $margin_width_percent: ($margin/$max_width);
-        $padding_width_percent: ($padding/$max_width);
-        
-        .list-item-columns-#{$i} {
-            width: $cell_width_percent*100%;
-            float: left;
-            padding: 1.5em $padding_width_percent*100%;
-            border: $border #CCCCCC solid;
-            margin: 1.5em $margin_width_percent*100%;
+
+    #content-core {
+
+        $padding: 16px;
+        $margin: 8px;
+        $border: 1px;
+        $max_columns: 5;
+
+        img {
+            max-width: 100%;
         }
 
-        .list-item-columns-#{$i}:nth-child(#{$i}n+1) {
-            clear: left;
+        .slideshow-item {
+            margin: 1em 0 2em;
+            padding: 1em;
+            border: 1px dashed #999999;
         }
 
+        .documentPage {
+            border: 1px solid #666666;
+            padding: 1.5em;
+            background-color: #f9f9f9;
+            margin: 1.5em 0;
+        }
+
+        .listItem {
+
+            background-color: #f0f0f0;
+
+            .listTitle {
+                font-weight: bold;
+                font-size: 1.25em;
+                margin-top: 0.25em;
+                margin-bottom: 0.125em;
+            }
+
+            .listTitle a {
+                border: none;
+            }
+
+            .listDescription {
+                margin-top: 0.25em;
+                margin-bottom: 0.125em;
+            }
+
+            .listLeadImage a,
+            .listLeadImage img {
+                border: none;
+            }
+
+            .listLeadImage img {
+                width: 100%;
+                height: auto;
+            }
+
+        }
+
+        @for $i from 1 to $max_columns {
+            $c: 100/$i;
+            $block_width: ($c/100)*$max_width;
+            $cell_width: $block_width - 2*($padding+$margin);
+            $cell_width_percent: $cell_width/$max_width - (2*$border)/$min_width;
+            $margin_width_percent: ($margin/$max_width);
+            $padding_width_percent: ($padding/$max_width);
+
+            .list-item-columns-#{$i} {
+                width: $cell_width_percent*100%;
+                float: left;
+                padding: 1.5em $padding_width_percent*100%;
+                border: $border #CCCCCC solid;
+                margin: 1.5em $margin_width_percent*100%;
+            }
+
+            .list-item-columns-#{$i}:nth-child(#{$i}n+1) {
+                clear: left;
+            }
+
+        }
     }
-}
 
+    #content {
+        ul.documentDescription {
 
-#content {
-    ul.documentDescription {
-        
-        li {
-            list-style-type: none;
+            li {
+                list-style-type: none;
+            }
+        }
+    }
+
+    #portal-column-content {
+        .documentEditable {
+            .cascade-select {
+
+                select {
+                    font-size: 1.0625em;
+                    padding: 0.5em 0.375em;
+                    margin: 0 0.375em;
+
+                    optgroup {
+                        font-weight: bold;
+                        color: black;
+                        padding: 0.25em 0 0.375em 0;
+                        margin-bottom: 0.25em;
+                        border-bottom: 1px solid #CCCCCC;
+                    }
+                }
+            }
         }
     }
 }
