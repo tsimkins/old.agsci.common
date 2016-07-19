@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool" purge="False">
+ <object name="navtree_properties" meta_type="Plone Property Sheet" purge="False">
+  <property name="metaTypesNotToList" type="lines">
+    <element value="atlas_article" />
+    <element value="atlas_article_page" />
+    <element value="Collection" />
+    <element value="Discussion Item" />
+    <element value="atlas_conference" />
+    <element value="atlas_cvent_event" />
+    <element value="Event" />
+    <element value="File" />
+    <element value="Image" />
+    <element value="Link" />
+    <element value="News Item" />
+    <element value="atlas_news_item" />
+    <element value="Document" />
+    <element value="person" />
+    <element value="atlas_article_slideshow" />
+    <element value="Topic" />
+    <element value="atlas_article_video" />
+    <element value="atlas_video" />
+    <element value="atlas_webinar" />
+    <element value="atlas_webinar_group" />
+    <element value="atlas_webinar_handout" />
+    <element value="atlas_webinar_presentation" />
+    <element value="atlas_webinar_recording" />
+    <element value="atlas_workshop" />
+    <element value="atlas_workshop_group" />
+  </property>
+ </object>
+</object>
