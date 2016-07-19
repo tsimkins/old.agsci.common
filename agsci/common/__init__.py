@@ -1,7 +1,12 @@
+from Products.CMFCore.DirectoryView import registerDirectory
 from zope.i18nmessageid import MessageFactory
 import re
 
 AgSciMessageFactory = MessageFactory('agsci.common')
+
+GLOBALS = globals()
+
+registerDirectory('skins', GLOBALS)
 
 def initialize(context):
     pass

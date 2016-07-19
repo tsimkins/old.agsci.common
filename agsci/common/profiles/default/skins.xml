@@ -2,7 +2,15 @@
     <object name="portal_skins" allow_any="False" cookie_persistence="False"
             default_skin="agsci.common" request_varname="plone_skin">
 
+        <object name="agsci"
+            meta_type="Filesystem Directory View"
+            directory="agsci.common:skins/agsci" />
+
         <skin-path name="agsci.common" based-on="Sunburst Theme">
+
+            <layer name="agsci"
+                insert-after="custom"/>
+                
         </skin-path>
 
     </object>
