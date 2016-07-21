@@ -139,6 +139,13 @@
 
         // Sort option groups
         this.sortChildren('optgroup');
+        
+        // Sort the options inside the option groups
+        this.children('optgroup').each(
+            function () {
+                $(this).sortChildren('option');
+            }
+        );
 
         return this
 
@@ -410,7 +417,7 @@
 
             // Add class of 'cascade-select'
             this.addClass('cascade-select');
-            
+
             // Remove the up/down buttons from the element
             this.find('[name="upButton"]').remove();
             this.find('[name="downButton"]').remove();
@@ -488,6 +495,155 @@
 
         // Returns the cascaded *to* element, so we can chain the cascades
         return to_el;
+
+    };
+
+}( jQuery ));
+
+/*
+--------------------------------------------------------------------------------
+  From cascading to determining visibility of child attributesets
+--------------------------------------------------------------------------------
+*/
+
+// initChildAttributeSets(): Initializes the showing or hiding of child attribute sets.
+(function( $ ) {
+
+    $.fn.initChildAttributeSets = function(c) {
+
+        this.data('child-attribute-config', c);
+
+        // Get the from/to buttons
+        var from2toButton = this.find('[name="from2toButton"]');
+        var to2fromButton = this.find('[name="to2fromButton"]');
+
+        // Remove and override the onclick attributes with an event handler
+        from2toButton.removeAttr('onclick');
+        to2fromButton.removeAttr('onclick');
+
+        // Bind updated click handler to buttons
+        from2toButton.bind('click',
+            function () {
+                $(this).getParentField().updateChildAttributeSets();
+            }
+        );
+
+        to2fromButton.bind('click',
+            function () {
+                $(this).getParentField().updateChildAttributeSets();
+            }
+        );
+
+        this.updateChildAttributeSets();
+
+        return this;
+
+    };
+
+}( jQuery ));
+
+// updateChildAttributeSets(): Does showing or hiding of child attribute sets.
+(function( $ ) {
+
+    $.fn.updateChildAttributeSets = function() {
+
+        // Get the "To" box from this widget
+        var to_select = this.getToSelectBox();
+
+        // Get the values selected
+        var selected_values = to_select.getSelectOptionValues();
+
+        // Get the config dictionary
+        var c = this.data('child-attribute-config');
+
+        // Initialize the "All" and "Show" lists
+        var all_children = [];
+        var show_children = [];
+
+        // Go through the config, and append all child attribute sets 
+        // (uniquely) to all_children
+        for (var i in c) {
+            var child_fields = c[i];
+
+            if (child_fields) {
+
+                for (var j=0; j<child_fields.length; j++) {
+                    var cf = child_fields[j];
+    
+                    if (all_children.indexOf(cf) < 0) {
+                        all_children.push(cf);
+                    }
+                }
+            }
+        }
+
+        // Go through the selected values and lookup up the child attribute set
+        // fields from the config, and append (uniquely) to show_children
+        for (var i=0; i<selected_values.length; i++) {
+            var v = selected_values[i]
+            var child_fields = c[v];
+            if (child_fields) {
+                for (var j=0; j<child_fields.length; j++) {
+                    var cf = child_fields[j];
+    
+                    if (show_children.indexOf(cf) < 0) {
+                        show_children.push(cf);
+                    }
+                }
+            }
+        }
+
+        // Itereate through all of the potential children         
+        for (var i in all_children) {
+
+            // Get the id selector for the child
+            var child_id = all_children[i];
+            
+            var child_obj = $(child_id);
+
+            // If the child isn't in the "Show" list
+            if (show_children.indexOf(child_id) < 0) {
+
+                // Get child "To" select box
+                var child_to_select = child_obj.getToSelectBox();
+                
+                // Get child "From" select box
+                var child_from_select = child_obj.getFromSelectBox();
+
+                // If the child "To" has any options selected
+                
+                if (child_to_select.children('option').size()) {
+                    
+                    // Select all of the "To" options
+                    child_to_select.children('option').each(
+                        function () {
+                            $(this).prop("selected", true);
+                            $(this).selected = true;
+                        }
+                    );
+
+                    // Click the left arrow to send them back
+                    child_obj.find('[name="to2fromButton"]').click();
+                }
+
+                // Delect all of the child "From" options
+                child_from_select.children('option').each(
+                    function () {
+                        $(this).prop("selected", false);
+                        $(this).selected = false;
+                    }
+                );
+
+                // Hide the child object
+                child_obj.hide();
+            }
+            else {
+                // Show the child object
+                child_obj.show();
+            }
+        }
+
+        return this;
 
     };
 
