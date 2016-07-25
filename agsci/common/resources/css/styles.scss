@@ -144,5 +144,65 @@ body {
                 }
             }
         }
+
+        #viewlet-below-content {
+            .data-dump {
+                font-size: 0.75em;
+                line-height: 1.45;
+
+                > div {
+                    margin: 0 1em;
+                    > div {
+                        margin: 0 0.5em;
+                    }
+
+                }
+
+                h2, h3, h4, h5 {
+                    color: #000000;
+                }
+
+                h2 {
+                    margin-top: 0;
+                    font-size: 1.602em;
+                    border-bottom: 1px solid #999999;
+                    margin-bottom: 0.375em;
+                }
+
+                h3 {
+                    font-size: 1.424em;
+                    color: #F6F6F6;
+                    background-color: #999999;
+                    border: 1px solid #333333;
+                    padding: 0 0.375em;
+                    margin-bottom: 0.375em;
+                }
+
+                h4 {
+                    font-size: 1.266em;
+                }
+
+                h5 {
+                    font-size: 1.125em;
+                }
+
+                p, ul {
+                    margin-bottom: 1.3em;
+                }
+
+                ul {
+                    display: block;
+                    list-style-type: disc;
+                    padding-left: 1em;
+                    font-size: 1em;
+                }
+
+                li {
+                    list-style-position: inside;
+                    display: list-item;
+                }
+
+            }
+        }
     }
 }

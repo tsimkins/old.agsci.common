@@ -92,5 +92,40 @@ body {
       padding: 0.25em 0 0.375em 0;
       margin-bottom: 0.25em;
       border-bottom: 1px solid #CCCCCC; }
+  #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump {
+    font-size: 0.75em;
+    line-height: 1.45; }
+    #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump > div {
+      margin: 0 1em; }
+      #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump > div > div {
+        margin: 0 0.5em; }
+    #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump h2, #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump h3, #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump h4, #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump h5 {
+      color: #000000; }
+    #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump h2 {
+      margin-top: 0;
+      font-size: 1.602em;
+      border-bottom: 1px solid #999999;
+      margin-bottom: 0.375em; }
+    #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump h3 {
+      font-size: 1.424em;
+      color: #F6F6F6;
+      background-color: #999999;
+      border: 1px solid #333333;
+      padding: 0 0.375em;
+      margin-bottom: 0.375em; }
+    #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump h4 {
+      font-size: 1.266em; }
+    #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump h5 {
+      font-size: 1.125em; }
+    #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump p, #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump ul {
+      margin-bottom: 1.3em; }
+    #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump ul {
+      display: block;
+      list-style-type: disc;
+      padding-left: 1em;
+      font-size: 1em; }
+    #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump li {
+      list-style-position: inside;
+      display: list-item; }
 
 /*# sourceMappingURL=styles.css.map */
