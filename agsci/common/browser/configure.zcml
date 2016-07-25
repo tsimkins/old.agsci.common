@@ -74,14 +74,4 @@
         layer=".interfaces.IThemeSpecific"
     />
 
-    <browser:page
-        name="search"
-        class=".views.Search"
-        permission="zope2.View"
-        for="*"
-        layer=".interfaces.IThemeSpecific"
-        template="templates/views/search.pt"
-        />
-
-
 </configure>
