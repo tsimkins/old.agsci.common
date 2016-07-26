@@ -173,7 +173,7 @@ body {
                     font-size: 1.424em;
                     color: #F6F6F6;
                     background-color: #999999;
-                    border: 1px solid #333333;
+                    border: 1px solid #666666;
                     padding: 0 0.375em;
                     margin-bottom: 0.375em;
                 }
@@ -203,6 +203,49 @@ body {
                 }
 
             }
+        }
+    }
+    
+    table.errors {
+
+        margin: 0.25em 1em 1.5em;
+        
+        th {
+            color: #FFFFFF;
+            background-color: #999999;
+            border: 1px solid #666666;
+            font-size: 1.125em;
+            padding: 0.25em 0.6875em;
+        }
+        
+        td {
+            border: 1px solid #666666;
+        }
+        
+        tr td:first-child {
+            font-weight: bold;
+        }
+        
+        tr td:first-child span:before {
+            font-weight: bold;
+            padding-right: 0.25em;
+            font-size: 1.5em;
+            display: inline-block;
+            float: left;
+            margin-top: -0.375em;
+        }
+
+        tr.error-check-high td:first-child span:before {
+            color: #DF291B;
+            content: "\25A0";
+        }
+        tr.error-check-medium td:first-child span:before {
+            color: #EF7B1D;
+            content: "\25A0";
+        }
+        tr.error-check-low td:first-child span:before {
+            color: #FFD71F;
+            content: "\25A0";
         }
     }
 }
