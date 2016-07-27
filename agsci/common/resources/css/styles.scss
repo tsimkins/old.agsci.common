@@ -261,3 +261,16 @@ body {
         }
     }
 }
+
+/* Override the embiggening for the Title field in a data grid */
+
+#content .field .datagridwidget-cell input[type="text"] {
+    font-family: "Helvetica Neue",​Arial,​FreeSans,​sans-serif;
+    font-size: 1em;
+    font-weight: normal;
+    width: 96%;
+    line-height: 1.5;
+    letter-spacing: 0;
+    margin: 3px 1%;
+    padding: 1%;
+}
