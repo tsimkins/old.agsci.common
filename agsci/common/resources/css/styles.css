@@ -127,6 +127,16 @@ body {
     #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump li {
       list-style-position: inside;
       display: list-item; }
+  #visual-portal-wrapper p.error-check-none:before {
+    font-weight: bold;
+    padding-right: 0.25em;
+    font-size: 1.5em;
+    display: inline-block;
+    float: left;
+    margin-top: -0.375em;
+    color: green;
+    content: "\25A0";
+    margin-left: 1em; }
   #visual-portal-wrapper table.errors {
     margin: 0.25em 1em 1.5em; }
     #visual-portal-wrapper table.errors th {
