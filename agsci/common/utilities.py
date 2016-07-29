@@ -1,5 +1,5 @@
 from DateTime import DateTime
-from datetime import datetime, tzinfo
+from datetime import datetime
 import pytz
 import base64
 

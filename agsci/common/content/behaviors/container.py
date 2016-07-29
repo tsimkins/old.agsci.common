@@ -2,9 +2,7 @@ from agsci.common import AgSciMessageFactory as _
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
 from zope.interface import provider
-from plone.autoform import directives as form
 from zope import schema
-from z3c.form.interfaces import IEditForm, IAddForm
 
 @provider(IFormFieldProvider)
 class IFolderFields(model.Schema):

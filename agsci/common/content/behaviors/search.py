@@ -2,7 +2,6 @@ from agsci.common import AgSciMessageFactory as _
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
 from zope.interface import provider
-from plone.autoform import directives as form
 from zope import schema
 from zope.schema.interfaces import IContextAwareDefaultFactory
 from ..vocabulary import getTypes
