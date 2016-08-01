@@ -42,6 +42,15 @@
         layer=".interfaces.IThemeSpecific"
         />
 
+    <browser:page
+        name="folder_listing"
+        for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+        class=".views.FolderView"
+        template="templates/views/folder_listing.pt"
+        permission="zope2.View"
+        layer=".interfaces.IThemeSpecific"
+        />
+
     <!-- "Display" menu items -->
 
     <browser:menuItem
