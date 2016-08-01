@@ -83,4 +83,15 @@
         layer=".interfaces.IThemeSpecific"
     />
 
+    <!-- Override the document byline -->
+
+    <browser:viewlet
+        name="plone.belowcontenttitle.documentbyline"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+        class="plone.app.layout.viewlets.content.DocumentBylineViewlet"
+        permission="zope2.View"
+        template="templates/viewlets/document_byline.pt"
+        layer=".interfaces.IThemeSpecific"
+    />
+
 </configure>
