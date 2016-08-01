@@ -10,6 +10,7 @@ from agsci.leadimage.interfaces import ILeadImageMarker as ILeadImage
 from agsci.common.content.behaviors.container import ITileFolder
 from plone.app.search.browser import Search as _Search
 from plone.app.search.browser import  quote_chars
+from plone.memoize.instance import memoize
 from Products.CMFPlone.browser.navtree import getNavigationRoot
 
 try:
@@ -59,6 +60,10 @@ class FolderView(BrowserView):
     @property
     def portal_catalog(self):
         return getToolByName(self.context, 'portal_catalog')
+
+    @property
+    def portal_membership(self):
+        return getToolByName(self.context, 'portal_membership')
 
     @property
     def anonymous(self):
@@ -248,7 +253,42 @@ class FolderView(BrowserView):
             item = item.getObject()
 
         return IEvent.providedBy(item)
+
+    @memoize
+    def getUserId(self):
+
+        user_id = getattr(self, 'user_id', self.request.form.get('user_id', None))
         
+        if user_id:
+            return user_id
+
+        user = self.portal_membership.getAuthenticatedMember()
+
+        if user:
+            return user.getId()
+
+        return None
+
+    def getFolderContents(self, contentFilter={}):
+        
+        if self.context.Type() in ['Topic', 'Collection']:
+            return self.context.queryCatalog(batch=False, **contentFilter)
+        
+        return self.context.getFolderContents(contentFilter, batch=False)
+    
+    def getOwner(self, item=None):
+
+        if item:
+            
+            owners = getattr(item, 'Owners', [])
+            
+            if owners:
+                return owners[0]
+
+
+        return None 
+
+
 class Search(_Search):
 
     def filter_query(self, query):
