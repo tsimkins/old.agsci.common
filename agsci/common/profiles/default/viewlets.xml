@@ -5,4 +5,10 @@
         <viewlet name="agsci.common.localsearch" insert-before="agsci.leadimage" />
     </order>
 
+    <hidden manager="plone.portalfooter" skinname="agsci.common">
+        <viewlet name="plone.footer"/>
+        <viewlet name="plone.colophon"/>
+        <viewlet name="plone.site_actions"/>
+    </hidden>
+    
 </object>
