@@ -100,6 +100,9 @@ body {
       margin: 0 1em; }
       #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump > div > div {
         margin: 0 0.5em; }
+        #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump > div > div p.field-description {
+          color: #575757;
+          margin-bottom: 0.375em; }
     #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump h2, #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump h3, #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump h4, #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump h5 {
       color: #000000; }
     #visual-portal-wrapper #portal-column-content #viewlet-below-content .data-dump h2 {

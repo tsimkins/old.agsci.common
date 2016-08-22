@@ -154,6 +154,11 @@ body {
                     margin: 0 1em;
                     > div {
                         margin: 0 0.5em;
+                        
+                        p.field-description {
+                            color: #575757;
+                            margin-bottom: 0.375em;
+                        }
                     }
 
                 }
