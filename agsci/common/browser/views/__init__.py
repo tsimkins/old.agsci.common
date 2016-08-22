@@ -18,12 +18,6 @@ try:
 except ImportError:
     from zope.component.hooks import getSite
 
-try:
-    from pyPdf import PdfFileReader
-except ImportError:
-    def PdfFileReader(*args, **kwargs):
-        return None
-
 class IFolderView(Interface):
     pass
     
