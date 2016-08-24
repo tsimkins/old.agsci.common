@@ -24,6 +24,18 @@ class IFolderView(Interface):
 class FolderView(BrowserView):
 
     implements(IFolderView)
+    
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+        
+        self.setHeaders()
+        
+    def setHeaders(self):
+
+        # Prevent from being cached in proxy cache
+        self.request.response.setHeader('Pragma', 'no-cache')
+        self.request.response.setHeader('Cache-Control', 'private, no-cache, no-store')
 
     @property
     def show_date(self):
