@@ -279,3 +279,103 @@ body {
     margin: 3px 1%;
     padding: 1%;
 }
+
+/* Classes for the All Content and My Content Views */
+
+body.template-all_content, 
+body.template-my_content {
+
+    #content-core {
+    
+        li {
+            margin-bottom: 1em;
+            
+            a[data-type]:before {
+                content: attr(data-type) ": ";
+                font-weight: bold;
+            }
+        }
+        
+        a.state-expired,
+        a.state-expiring_soon,
+        a.state-imported,
+        a.state-pending,
+        a.state-private,
+        a.state-published,
+        a.state-requires_feedback,
+        a.state-requires_initial_review {
+            color: #205c90 !important;
+            font-size: 1.125em;
+            margin-bottom: 0.125em;
+            display: inline-block;
+        }
+    
+        a.state-expired:after,
+        a.state-expiring_soon:after,
+        a.state-imported:after,
+        a.state-pending:after,
+        a.state-private:after,
+        a.state-published:after,
+        a.state-requires_feedback:after,
+        a.state-requires_initial_review:after {
+            color: #FFFFFF;
+            background-color: #000000;
+            padding: 0.25em 0.25em;
+            margin-left: 0.375em;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.875em;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+    
+        a.state-expired:after {
+            content: "Expired";
+            background-color: #575757;
+        }
+        
+        
+        a.state-expiring_soon:after {
+            content: "Expiring Soon";
+            background-color: #FF0000;
+        }
+        
+        
+        a.state-imported:after {
+            content: "Imported";
+            background-color: #FFA500;
+        }
+        
+        
+        a.state-pending:after {
+            content: "Pending Review";
+            background-color: #FFA500;
+        }
+        
+        
+        a.state-private:after {
+            content: "Private";
+            background-color: #FF0000;
+        }
+        
+        
+        a.state-published:after {
+            content: "Published";
+            background-color: #575757;
+        }
+        
+        
+        a.state-requires_feedback:after {
+            content: "Requires Feedback";
+            background-color: #FF0000;
+        }
+        
+        
+        a.state-requires_initial_review:after {
+            content: "Requires Initial Review";
+            background-color: #FF0000;
+        }
+    }        
+
+}

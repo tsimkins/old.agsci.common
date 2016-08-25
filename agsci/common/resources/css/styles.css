@@ -181,4 +181,91 @@ body {
   margin: 3px 1%;
   padding: 1%; }
 
+/* Classes for the All Content and My Content Views */
+body.template-all_content #content-core li,
+body.template-my_content #content-core li {
+  margin-bottom: 1em; }
+  body.template-all_content #content-core li a[data-type]:before,
+  body.template-my_content #content-core li a[data-type]:before {
+    content: attr(data-type) ": ";
+    font-weight: bold; }
+body.template-all_content #content-core a.state-expired,
+body.template-all_content #content-core a.state-expiring_soon,
+body.template-all_content #content-core a.state-imported,
+body.template-all_content #content-core a.state-pending,
+body.template-all_content #content-core a.state-private,
+body.template-all_content #content-core a.state-published,
+body.template-all_content #content-core a.state-requires_feedback,
+body.template-all_content #content-core a.state-requires_initial_review,
+body.template-my_content #content-core a.state-expired,
+body.template-my_content #content-core a.state-expiring_soon,
+body.template-my_content #content-core a.state-imported,
+body.template-my_content #content-core a.state-pending,
+body.template-my_content #content-core a.state-private,
+body.template-my_content #content-core a.state-published,
+body.template-my_content #content-core a.state-requires_feedback,
+body.template-my_content #content-core a.state-requires_initial_review {
+  color: #205c90 !important;
+  font-size: 1.125em;
+  margin-bottom: 0.125em;
+  display: inline-block; }
+body.template-all_content #content-core a.state-expired:after,
+body.template-all_content #content-core a.state-expiring_soon:after,
+body.template-all_content #content-core a.state-imported:after,
+body.template-all_content #content-core a.state-pending:after,
+body.template-all_content #content-core a.state-private:after,
+body.template-all_content #content-core a.state-published:after,
+body.template-all_content #content-core a.state-requires_feedback:after,
+body.template-all_content #content-core a.state-requires_initial_review:after,
+body.template-my_content #content-core a.state-expired:after,
+body.template-my_content #content-core a.state-expiring_soon:after,
+body.template-my_content #content-core a.state-imported:after,
+body.template-my_content #content-core a.state-pending:after,
+body.template-my_content #content-core a.state-private:after,
+body.template-my_content #content-core a.state-published:after,
+body.template-my_content #content-core a.state-requires_feedback:after,
+body.template-my_content #content-core a.state-requires_initial_review:after {
+  color: #FFFFFF;
+  background-color: #000000;
+  padding: 0.25em 0.25em;
+  margin-left: 0.375em;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.875em;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px; }
+body.template-all_content #content-core a.state-expired:after,
+body.template-my_content #content-core a.state-expired:after {
+  content: "Expired";
+  background-color: #575757; }
+body.template-all_content #content-core a.state-expiring_soon:after,
+body.template-my_content #content-core a.state-expiring_soon:after {
+  content: "Expiring Soon";
+  background-color: #FF0000; }
+body.template-all_content #content-core a.state-imported:after,
+body.template-my_content #content-core a.state-imported:after {
+  content: "Imported";
+  background-color: #FFA500; }
+body.template-all_content #content-core a.state-pending:after,
+body.template-my_content #content-core a.state-pending:after {
+  content: "Pending Review";
+  background-color: #FFA500; }
+body.template-all_content #content-core a.state-private:after,
+body.template-my_content #content-core a.state-private:after {
+  content: "Private";
+  background-color: #FF0000; }
+body.template-all_content #content-core a.state-published:after,
+body.template-my_content #content-core a.state-published:after {
+  content: "Published";
+  background-color: #575757; }
+body.template-all_content #content-core a.state-requires_feedback:after,
+body.template-my_content #content-core a.state-requires_feedback:after {
+  content: "Requires Feedback";
+  background-color: #FF0000; }
+body.template-all_content #content-core a.state-requires_initial_review:after,
+body.template-my_content #content-core a.state-requires_initial_review:after {
+  content: "Requires Initial Review";
+  background-color: #FF0000; }
+
 /*# sourceMappingURL=styles.css.map */
