@@ -3,6 +3,8 @@ from AccessControl.SecurityManagement import newSecurityManager, setSecurityMana
 from AccessControl.User import UnrestrictedUser as BaseUnrestrictedUser
 from DateTime import DateTime
 from datetime import datetime
+from zope.component.hooks import getSite
+
 import pytz
 import base64
 
@@ -73,7 +75,7 @@ class UnrestrictedUser(BaseUnrestrictedUser):
         """
         return self.getUserName()
 
-def execute_under_special_role(portal, roles, function, *args, **kwargs):
+def execute_under_special_role(roles, function, *args, **kwargs):
     """ Execute code under special role privileges.
 
     Example how to call::
@@ -94,6 +96,7 @@ def execute_under_special_role(portal, roles, function, *args, **kwargs):
     @param kwargs: Passed to the function
     """
 
+    portal = getSite()
     sm = getSecurityManager()
 
     try:
