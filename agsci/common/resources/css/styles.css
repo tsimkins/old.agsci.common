@@ -268,4 +268,9 @@ body.template-my_content #content-core a.state-requires_initial_review:after {
   content: "Requires Initial Review";
   background-color: #FF0000; }
 
+/* These classes insert the content type before the title when on the product */
+body[class*="portaltype-atlas_"] h1.documentFirstHeading[data-type]:before {
+  content: attr(data-type) ": ";
+  font-weight: normal; }
+
 /*# sourceMappingURL=styles.css.map */
