@@ -5,6 +5,20 @@ body {
     background-color: #333333;
 }
 
+body.template-listing_view {
+    
+    #visual-portal-wrapper {
+        #content-core {
+            .listItem {
+                margin-bottom: 0.75em;
+                padding-bottom: 0.5em;
+                background-color: transparent;
+                border-bottom: 1px solid #f0f0f0;
+            }
+        }
+    }
+}
+
 #visual-portal-wrapper {
     max-width: $max_width;
     margin: 0 auto;
@@ -117,6 +131,11 @@ body {
     }
 
     #content {
+        
+        div.documentByLine {
+            font-size: 100%;
+        }
+
         ul.documentDescription {
 
             li {

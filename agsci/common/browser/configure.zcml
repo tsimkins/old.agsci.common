@@ -25,6 +25,15 @@
         />
 
     <browser:page
+        name="listing_view"
+        for="plone.dexterity.interfaces.IDexterityContainer"
+        class=".views.FolderView"
+        template="templates/views/folder_listing.pt"
+        permission="zope2.View"
+        layer=".interfaces.IThemeSpecific"
+        />
+
+    <browser:page
         name="folder_listing"
         for="plone.dexterity.interfaces.IDexterityContainer"
         class=".views.FolderView"
