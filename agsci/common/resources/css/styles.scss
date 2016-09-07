@@ -286,6 +286,31 @@ body.template-listing_view {
     }
 }
 
+body.template-all_content,
+body.template-my_content {
+
+    span[class *= "error-check"]:before {
+        content: "\25A0";     
+        font-size: 1.25em;   
+    }
+
+    span.error-check-high:before {
+        color: #DF291B;
+    }
+    span.error-check-medium:before {
+        color: #FF9D4F;
+    }
+    span.error-check-low:before {
+        color: #FFD71F;
+
+    }
+    
+    span.error-check-none:before {
+        color: green;
+        content: "\25A0";
+    }
+}
+
 /* Override the embiggening for the Title field in a data grid */
 
 #content .field .datagridwidget-cell input[type="text"] {

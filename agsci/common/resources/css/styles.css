@@ -178,6 +178,24 @@ body.template-listing_view #visual-portal-wrapper #content-core .listItem {
       color: #FFD71F;
       content: "\25A0"; }
 
+body.template-all_content span[class*="error-check"]:before,
+body.template-my_content span[class*="error-check"]:before {
+  content: "\25A0";
+  font-size: 1.25em; }
+body.template-all_content span.error-check-high:before,
+body.template-my_content span.error-check-high:before {
+  color: #DF291B; }
+body.template-all_content span.error-check-medium:before,
+body.template-my_content span.error-check-medium:before {
+  color: #FF9D4F; }
+body.template-all_content span.error-check-low:before,
+body.template-my_content span.error-check-low:before {
+  color: #FFD71F; }
+body.template-all_content span.error-check-none:before,
+body.template-my_content span.error-check-none:before {
+  color: green;
+  content: "\25A0"; }
+
 /* Override the embiggening for the Title field in a data grid */
 #content .field .datagridwidget-cell input[type="text"] {
   font-family: "Helvetica Neue",​Arial,​FreeSans,​sans-serif;
