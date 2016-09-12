@@ -33,7 +33,8 @@
                     </tal:leadimage>
 
                     <div class="listTitle"
-                        metal:define-macro="listitem">
+                         tal:attributes="data-type item/Type"
+                         metal:define-macro="listitem">
 
                         <a href="#"
                            class="summary url"

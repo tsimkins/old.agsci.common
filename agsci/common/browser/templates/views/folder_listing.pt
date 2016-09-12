@@ -71,7 +71,8 @@
                     tal:define="klass python:view.getItemClass(item);"
                     tal:attributes="class klass">
 
-                    <div class="listTitle summary">
+                    <div class="listTitle summary"
+                         tal:attributes="data-type item/Type">
                         <a href="#"
                            tal:attributes="href python:view.getItemURL(item);
                                            class string:$item_type_class $item_wf_state_class url"
