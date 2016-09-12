@@ -299,4 +299,15 @@ body[class*="portaltype-atlas_"] h1.documentFirstHeading[data-type]:before {
   content: attr(data-type) ": ";
   font-weight: normal; }
 
+#content-core .product-listing div.listTitle[data-type]:before {
+  content: attr(data-type);
+  font-weight: bold;
+  background-color: #575757;
+  color: white;
+  display: block;
+  padding: 0.25em 0.375em;
+  font-size: 0.75em;
+  margin-bottom: 0.375em;
+  border: 1px solid #666666; }
+
 /*# sourceMappingURL=styles.css.map */
