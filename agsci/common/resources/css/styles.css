@@ -1,12 +1,15 @@
 @charset "UTF-8";
 body {
   background-color: #333333; }
+  body a:link,
+  body a:visited {
+    color: #114C9A; }
 
 body.template-listing_view #visual-portal-wrapper #content-core .listItem {
   margin-bottom: 0.75em;
   padding-bottom: 0.5em;
   background-color: transparent;
-  border-bottom: 1px solid #f0f0f0; }
+  border-bottom: 1px solid #CCCCCC; }
 
 #visual-portal-wrapper {
   max-width: 1200px;
@@ -38,7 +41,7 @@ body.template-listing_view #visual-portal-wrapper #content-core .listItem {
     background-color: #f9f9f9;
     margin: 1.5em 0; }
   #visual-portal-wrapper #content-core .listItem {
-    background-color: #f0f0f0; }
+    background-color: #F6F6F6; }
     #visual-portal-wrapper #content-core .listItem .listTitle {
       font-weight: bold;
       font-size: 1.25em;
@@ -311,5 +314,39 @@ body[class*="portaltype-atlas_"] h1.documentFirstHeading[data-type]:before {
   border: 1px solid #666666; }
 #content-core .product-listing .pagination {
   clear: both; }
+
+/* Fix the link color */
+#content a:link,
+dl.portlet a:link {
+  color: #114C9A; }
+
+.state-published {
+  color: #114C9A !important; }
+
+/* Navigation Tree Styles */
+dl.portlet.portletNavigationTree {
+  font-size: 0.875em; }
+  dl.portlet.portletNavigationTree img {
+    display: none; }
+  dl.portlet.portletNavigationTree ul.navTreeLevel0 > li > a.navTreeCurrentItem,
+  dl.portlet.portletNavigationTree ul.navTreeLevel0 > li > a.navTreeItemInPath {
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    font-weight: bold; }
+  dl.portlet.portletNavigationTree ul.navTreeLevel0 ul.navTreeLevel1 {
+    font-size: 0.9375em;
+    margin: 0.25em 0 0.5em 0;
+    border: 1px solid #CCCCCC;
+    background-color: #F6F6F6; }
+    dl.portlet.portletNavigationTree ul.navTreeLevel0 ul.navTreeLevel1 > li {
+      padding: 0.125em 0.75em;
+      margin: 0; }
+      dl.portlet.portletNavigationTree ul.navTreeLevel0 ul.navTreeLevel1 > li > a.navTreeCurrentItem,
+      dl.portlet.portletNavigationTree ul.navTreeLevel0 ul.navTreeLevel1 > li > a.navTreeItemInPath {
+        margin: 0;
+        border: none;
+        background-color: transparent;
+        font-weight: bold; }
 
 /*# sourceMappingURL=styles.css.map */
