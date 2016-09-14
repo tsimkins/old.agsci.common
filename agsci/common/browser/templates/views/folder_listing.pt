@@ -75,7 +75,7 @@
                          tal:attributes="data-type item/Type">
                         <a href="#"
                            tal:attributes="href python:view.getItemURL(item);
-                                           class string:$item_type_class $item_wf_state_class url"
+                                           class string:$item_wf_state_class url"
                            tal:content="item_title_or_id">
                             Item Title
                         </a>
@@ -142,16 +142,6 @@
                               </span>
 
                             </tal:name>
-
-                            <tal:modified>
-                                &mdash;
-                                <tal:mod i18n:translate="box_last_modified">
-                                  last modified
-                                </tal:mod>
-                                <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
-                                  August 16, 2001 at 23:35:59
-                                </span>
-                            </tal:modified>
 
                             <metal:description define-slot="description_slot">
                                 <tal:comment replace="nothing">
