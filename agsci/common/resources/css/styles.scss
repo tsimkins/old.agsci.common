@@ -104,14 +104,35 @@ body.template-listing_view {
                 margin-bottom: 0.125em;
             }
 
+            .listLeadImage {
+                width: 100%;
+                height: 0;
+                padding-bottom: 100%*(2.0/3);
+                position: relative;
+                overflow: hidden;
+            }
+
             .listLeadImage a,
             .listLeadImage img {
                 border: none;
             }
 
-            .listLeadImage img {
-                width: 100%;
-                height: auto;
+            .listLeadImage a {
+
+                img {
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    /* 
+                       That was easy!
+                       http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+                    */
+                    -ms-transform: translateY(-50%);
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
+                    top: 50%;
+                }
+
             }
 
         }
