@@ -5,16 +5,58 @@ $item_background: #F6F6F6;
 $item_border: #CCCCCC;
 $link_color: #114C9A;
 
+html {
+    font-size: 1em;
+}
+
 body {
     background-color: #333333;
+    font-weight: 400;
+    line-height: 1.45;
 
     a:link,
     a:visited {
         color: $link_color;
     }
+    
+    table.listing th {
+        color: #333333;
+    }
+    
+    #content {
+
+        h1, h1.documentFirstHeading,
+        h2, h3, h4 {
+          margin: 1.414em 0 0.5em;
+          font-weight: inherit;
+          line-height: 1.2;
+          letter-spacing: -0.03em;
+        }
+
+        h1, h1.documentFirstHeading, {
+          margin-top: 0;
+          font-size: 3.157em;
+          font-weight: bold;
+        }
+        
+        h2 {font-size: 2.369em;}
+        
+        h3 {font-size: 1.777em;}
+        
+        h4 {font-size: 1.333em;}
+        
+        small, .font_small {font-size: 0.75em;}
+
+        h2 {
+            border-bottom: 1px solid $item_border;
+            margin-bottom: 0.5em;
+        }
+    }
 }
 
-body.template-listing_view {
+body.template-listing_view,
+body.template-plone_site_view,
+ {
 
     #visual-portal-wrapper {
         #content-core {
@@ -319,46 +361,6 @@ body.template-listing_view {
 body.template-all_content,
 body.template-my_content {
 
-    span[class *= "error-check"]:before {
-        content: "\25A0";
-        font-size: 1.25em;
-    }
-
-    span.error-check-high:before {
-        color: #DF291B;
-    }
-    span.error-check-medium:before {
-        color: #FF9D4F;
-    }
-    span.error-check-low:before {
-        color: #FFD71F;
-
-    }
-
-    span.error-check-none:before {
-        color: green;
-        content: "\25A0";
-    }
-}
-
-/* Override the embiggening for the Title field in a data grid */
-
-#content .field .datagridwidget-cell input[type="text"] {
-    font-family: "Helvetica Neue",​Arial,​FreeSans,​sans-serif;
-    font-size: 1em;
-    font-weight: normal;
-    width: 96%;
-    line-height: 1.5;
-    letter-spacing: 0;
-    margin: 3px 1%;
-    padding: 1%;
-}
-
-/* Classes for the All Content and My Content Views */
-
-body.template-all_content,
-body.template-my_content {
-
     #content-core {
 
         li {
@@ -368,6 +370,26 @@ body.template-my_content {
                 content: attr(data-type) ": ";
                 font-weight: bold;
             }
+        }
+
+        span[class *= "error-check"]:before {
+            content: "\25A0";
+            font-size: 1.25em;
+        }
+    
+        span.error-check-high:before {
+            color: #DF291B;
+        }
+        span.error-check-medium:before {
+            color: #FF9D4F;
+        }
+        span.error-check-low:before {
+            color: #FFD71F;
+        }
+    
+        span.error-check-none:before {
+            color: green;
+            content: "\25A0";
         }
 
         a.state-expired,
@@ -452,6 +474,20 @@ body.template-my_content {
         }
     }
 
+
+}
+
+/* Override the embiggening for the Title field in a data grid */
+
+#content .field .datagridwidget-cell input[type="text"] {
+    font-family: "Helvetica Neue",​Arial,​FreeSans,​sans-serif;
+    font-size: 1em;
+    font-weight: normal;
+    width: 96%;
+    line-height: 1.5;
+    letter-spacing: 0;
+    margin: 3px 1%;
+    padding: 1%;
 }
 
 /* These classes insert the content type before the title when on the product */

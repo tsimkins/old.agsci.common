@@ -1,11 +1,40 @@
 @charset "UTF-8";
+html {
+  font-size: 1em; }
+
 body {
-  background-color: #333333; }
+  background-color: #333333;
+  font-weight: 400;
+  line-height: 1.45; }
   body a:link,
   body a:visited {
     color: #114C9A; }
+  body table.listing th {
+    color: #333333; }
+  body #content h1, body #content h1.documentFirstHeading,
+  body #content h2, body #content h3, body #content h4 {
+    margin: 1.414em 0 0.5em;
+    font-weight: inherit;
+    line-height: 1.2;
+    letter-spacing: -0.03em; }
+  body #content h1, body #content h1.documentFirstHeading {
+    margin-top: 0;
+    font-size: 3.157em;
+    font-weight: bold; }
+  body #content h2 {
+    font-size: 2.369em; }
+  body #content h3 {
+    font-size: 1.777em; }
+  body #content h4 {
+    font-size: 1.333em; }
+  body #content small, body #content .font_small {
+    font-size: 0.75em; }
+  body #content h2 {
+    border-bottom: 1px solid #CCCCCC;
+    margin-bottom: 0.5em; }
 
-body.template-listing_view #visual-portal-wrapper #content-core .listItem {
+body.template-listing_view #visual-portal-wrapper #content-core .listItem,
+body.template-plone_site_view #visual-portal-wrapper #content-core .listItem {
   margin-bottom: 0.75em;
   padding-bottom: 0.5em;
   background-color: transparent;
@@ -196,36 +225,6 @@ body.template-listing_view #visual-portal-wrapper #content-core .listItem {
       color: #FFD71F;
       content: "\25A0"; }
 
-body.template-all_content span[class*="error-check"]:before,
-body.template-my_content span[class*="error-check"]:before {
-  content: "\25A0";
-  font-size: 1.25em; }
-body.template-all_content span.error-check-high:before,
-body.template-my_content span.error-check-high:before {
-  color: #DF291B; }
-body.template-all_content span.error-check-medium:before,
-body.template-my_content span.error-check-medium:before {
-  color: #FF9D4F; }
-body.template-all_content span.error-check-low:before,
-body.template-my_content span.error-check-low:before {
-  color: #FFD71F; }
-body.template-all_content span.error-check-none:before,
-body.template-my_content span.error-check-none:before {
-  color: green;
-  content: "\25A0"; }
-
-/* Override the embiggening for the Title field in a data grid */
-#content .field .datagridwidget-cell input[type="text"] {
-  font-family: "Helvetica Neue",​Arial,​FreeSans,​sans-serif;
-  font-size: 1em;
-  font-weight: normal;
-  width: 96%;
-  line-height: 1.5;
-  letter-spacing: 0;
-  margin: 3px 1%;
-  padding: 1%; }
-
-/* Classes for the All Content and My Content Views */
 body.template-all_content #content-core li,
 body.template-my_content #content-core li {
   margin-bottom: 1em; }
@@ -233,6 +232,23 @@ body.template-my_content #content-core li {
   body.template-my_content #content-core li a[data-type]:before {
     content: attr(data-type) ": ";
     font-weight: bold; }
+body.template-all_content #content-core span[class*="error-check"]:before,
+body.template-my_content #content-core span[class*="error-check"]:before {
+  content: "\25A0";
+  font-size: 1.25em; }
+body.template-all_content #content-core span.error-check-high:before,
+body.template-my_content #content-core span.error-check-high:before {
+  color: #DF291B; }
+body.template-all_content #content-core span.error-check-medium:before,
+body.template-my_content #content-core span.error-check-medium:before {
+  color: #FF9D4F; }
+body.template-all_content #content-core span.error-check-low:before,
+body.template-my_content #content-core span.error-check-low:before {
+  color: #FFD71F; }
+body.template-all_content #content-core span.error-check-none:before,
+body.template-my_content #content-core span.error-check-none:before {
+  color: green;
+  content: "\25A0"; }
 body.template-all_content #content-core a.state-expired,
 body.template-all_content #content-core a.state-expiring_soon,
 body.template-all_content #content-core a.state-imported,
@@ -311,6 +327,17 @@ body.template-all_content #content-core a.state-requires_initial_review:after,
 body.template-my_content #content-core a.state-requires_initial_review:after {
   content: "Requires Initial Review";
   background-color: #FF0000; }
+
+/* Override the embiggening for the Title field in a data grid */
+#content .field .datagridwidget-cell input[type="text"] {
+  font-family: "Helvetica Neue",​Arial,​FreeSans,​sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+  width: 96%;
+  line-height: 1.5;
+  letter-spacing: 0;
+  margin: 3px 1%;
+  padding: 1%; }
 
 /* These classes insert the content type before the title when on the product */
 body[class*="portaltype-atlas_"] h1.documentFirstHeading[data-type]:before {
