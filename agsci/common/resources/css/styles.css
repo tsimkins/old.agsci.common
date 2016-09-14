@@ -309,5 +309,7 @@ body[class*="portaltype-atlas_"] h1.documentFirstHeading[data-type]:before {
   font-size: 0.75em;
   margin-bottom: 0.375em;
   border: 1px solid #666666; }
+#content-core .product-listing .pagination {
+  clear: both; }
 
 /*# sourceMappingURL=styles.css.map */

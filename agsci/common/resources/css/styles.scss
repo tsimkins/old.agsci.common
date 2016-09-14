@@ -434,6 +434,7 @@ body[class *= "portaltype-atlas_"] {
 }
 
 #content-core .product-listing {
+
     div.listTitle[data-type]:before {
         content: attr(data-type);
         font-weight: bold;
@@ -444,5 +445,9 @@ body[class *= "portaltype-atlas_"] {
         font-size: 0.75em;
         margin-bottom: 0.375em;
         border: 1px solid #666666;
+    }
+    
+    .pagination {
+        clear: both;
     }
 }
