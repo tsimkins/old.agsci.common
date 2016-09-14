@@ -387,7 +387,7 @@ dl.portlet.portletNavigationTree {
       list-style-type: none; }
       #content .atlas-review-nav ul li a {
         border-bottom: none !important;
-        padding: 0.75em 0.75em;
+        padding: 0.5em 0.5em;
         margin: 0;
         border-left: 1px solid #CCCCCC;
         display: block;
