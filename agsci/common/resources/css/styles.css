@@ -364,4 +364,40 @@ dl.portlet.portletNavigationTree {
         background-color: transparent;
         font-weight: bold; }
 
+/* CSS for atlas menu controls */
+/* Atlas Review Navigation */
+#content .atlas-filter {
+  margin-bottom: 1em; }
+#content .atlas-item {
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px dashed #CCCCCC; }
+#content .atlas-review-nav {
+  background-color: #F6F6F6;
+  margin-bottom: 1em;
+  border: 1px solid #CCCCCC; }
+  #content .atlas-review-nav ul {
+    font-size: 1em;
+    margin-left: 0;
+    display: block; }
+    #content .atlas-review-nav ul li {
+      display: inline-block;
+      float: left;
+      margin-bottom: 0;
+      list-style-type: none; }
+      #content .atlas-review-nav ul li a {
+        border-bottom: none !important;
+        padding: 0.75em 0.75em;
+        margin: 0;
+        border-left: 1px solid #CCCCCC;
+        display: block;
+        background-color: #F6F6F6; }
+      #content .atlas-review-nav ul li a:hover {
+        text-decoration: underline; }
+      #content .atlas-review-nav ul li a.selected {
+        background-color: #114C9A;
+        color: #F6F6F6; }
+    #content .atlas-review-nav ul li:first-child a {
+      border-left: none; }
+
 /*# sourceMappingURL=styles.css.map */
