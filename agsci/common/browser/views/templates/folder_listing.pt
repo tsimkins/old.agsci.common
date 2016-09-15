@@ -157,7 +157,7 @@
 
                     <metal:issue-summary define-macro="issue_summary">
                     
-                        <div
+                        <div class="issue-summary"
                             tal:define="issues python: view.getIssues(item)"
                             tal:condition="issues">
                                 <span class="discreet">Issue Summary:</span>
