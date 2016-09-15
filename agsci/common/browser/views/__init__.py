@@ -319,6 +319,25 @@ class FolderView(BrowserView):
 
         return ''
 
+    def getIssues(self, item):
+        issues = item.ContentIssues
+
+        levels = ['High', 'Medium', 'Low']
+
+        if issues:
+            rv = []
+
+            data = dict(zip(levels, issues))
+
+            for k in levels:
+                v = data.get(k)
+
+                if isinstance(v, int) and v > 0:
+                    rv.append(v*('<span class="error-check-%s"></span>' % k.lower()))
+            if rv:
+                return "".join(rv)
+
+            return '<span class="error-check-none"></span>'
 
 class Search(_Search):
 

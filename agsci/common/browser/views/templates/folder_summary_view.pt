@@ -109,14 +109,7 @@
                         </span>
                     </p>
 
-                    <p class="listFooter"
-                        tal:condition="view/show_read_more">
-                        <a href=""
-                           tal:attributes="href item_url"> 
-                           <span class="hiddenStructure"><span tal:replace="item_title_or_id" /> - </span> 
-                           <span i18n:translate="read_more">Read More&hellip;</span> 
-                        </a>
-                    </p>
+                    <metal:issue-summary use-macro="context/@@folder_listing/macros/issue_summary" />
 
                     <div class="visualClear"><!-- --></div>
 
