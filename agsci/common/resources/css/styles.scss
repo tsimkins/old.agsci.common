@@ -54,21 +54,28 @@ body {
     }
 }
 
-body.template-listing_view,
-body.template-plone_site_view,
- {
+body.template-plone_site_view {
 
     #visual-portal-wrapper {
+        #portal-breadcrumbs {
+            display: none;
+        }
+        
         #content-core {
             .listItem {
-                margin-bottom: 0.75em;
-                padding-bottom: 0.5em;
+                margin-top: 0;
+                padding-top: 0;
                 background-color: transparent;
-                border-bottom: 1px solid $item_border;
+                border: none;
+                
+                h2 {
+                    margin-top: 0;
+                }
             }
         }
     }
 }
+   
 
 #visual-portal-wrapper {
     max-width: $max_width;
@@ -604,45 +611,48 @@ dl.portlet.portletNavigationTree {
         border-bottom: 1px dashed $item_border;
     }
 
-    .atlas-review-nav {
+    .atlas-controls {
     
-        background-color: $item_background;
-        margin-bottom: 1em;
-        border: 1px solid $item_border;
-    
-        ul {
-    
-            font-size: 1em;
-            margin-left: 0;
-            display: block;
-            
-            li {
-                display: inline-block;
-                float: left;
-                margin-bottom: 0 !important;
-                list-style-type: none;
+        .atlas-review-nav {
+        
+            background-color: $item_background;
+            margin-bottom: 1em;
+            border: 1px solid $item_border;
+        
+            ul {
+        
+                font-size: 1em;
+                margin-left: 0;
+                display: block;
                 
-                a {
-                    border-bottom: none !important;
-                    padding: 0.5em 0.5em;
-                    margin: 0;
-                    border-left: 1px solid $item_border;
-                    display: block;
-                    background-color: $item_background;
-                }
+                li {
+                    display: inline-block;
+                    float: left;
+                    margin-bottom: 0 !important;
+                    list-style-type: none;
+                    
+                    a {
+                        border-bottom: none !important;
+                        padding: 0.5em 0.5em;
+                        margin: 0;
+                        border-left: 1px solid $item_border;
+                        display: block;
+                        background-color: $item_background;
+                    }
+            
+                    a:hover {
+                        text-decoration: underline;
+                    }
         
-                a:hover {
-                    text-decoration: underline;
+                    a.selected {
+                        background-color: $link_color;
+                        color: $item_background;
+                    }
                 }
-    
-                a.selected {
-                    background-color: $link_color;
-                    color: $item_background;
+            
+                li:first-child a {
+                    border-left: none;
                 }
-            }
-        
-            li:first-child a {
-                border-left: none;
             }
         }
     }
