@@ -109,6 +109,37 @@ body.template-plone_site_view,
         $border: 1px;
         $max_columns: 5;
 
+        li {
+            margin-bottom: 1em;
+
+            a[data-type]:before {
+                content: attr(data-type) ": ";
+                font-weight: bold;
+            }
+        }
+
+        .issue-summary {
+            span[class *= "error-check"]:before {
+                content: "\25A0";
+                font-size: 1.25em;
+            }
+        
+            span.error-check-high:before {
+                color: #DF291B;
+            }
+            span.error-check-medium:before {
+                color: #FF9D4F;
+            }
+            span.error-check-low:before {
+                color: #FFD71F;
+            }
+        
+            span.error-check-none:before {
+                color: green;
+                content: "\25A0";
+            }
+        }
+        
         img {
             max-width: 100%;
         }
@@ -371,35 +402,6 @@ body.portaltype-atlas_article {
 
     #content-core {
 
-        li {
-            margin-bottom: 1em;
-
-            a[data-type]:before {
-                content: attr(data-type) ": ";
-                font-weight: bold;
-            }
-        }
-
-        span[class *= "error-check"]:before {
-            content: "\25A0";
-            font-size: 1.25em;
-        }
-    
-        span.error-check-high:before {
-            color: #DF291B;
-        }
-        span.error-check-medium:before {
-            color: #FF9D4F;
-        }
-        span.error-check-low:before {
-            color: #FFD71F;
-        }
-    
-        span.error-check-none:before {
-            color: green;
-            content: "\25A0";
-        }
-
         a.state-expired,
         a.state-expiring_soon,
         a.state-imported,
@@ -617,7 +619,7 @@ dl.portlet.portletNavigationTree {
             li {
                 display: inline-block;
                 float: left;
-                margin-bottom: 0;
+                margin-bottom: 0 !important;
                 list-style-type: none;
                 
                 a {
