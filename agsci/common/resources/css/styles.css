@@ -11,36 +11,45 @@ body {
     color: #114C9A; }
   body table.listing th {
     color: #333333; }
-  body #content h1, body #content h1.documentFirstHeading,
-  body #content h2, body #content h3, body #content h4 {
-    margin: 1.414em 0 0.5em;
-    font-weight: inherit;
-    line-height: 1.2;
-    letter-spacing: -0.03em; }
-  body #content h1, body #content h1.documentFirstHeading {
-    margin-top: 0;
-    font-size: 3.157em;
-    font-weight: bold; }
-  body #content h2 {
-    font-size: 2.369em; }
-  body #content h3 {
-    font-size: 1.777em; }
-  body #content h4 {
-    font-size: 1.333em; }
-  body #content small, body #content .font_small {
-    font-size: 0.75em; }
-  body #content h2 {
-    border-bottom: 1px solid #CCCCCC;
-    margin-bottom: 0.5em; }
+  body #content {
+    font-size: 1em; }
+    body #content h1, body #content h1.documentFirstHeading,
+    body #content h2, body #content h3, body #content h4 {
+      margin: 1.414em 0 0.5em;
+      font-weight: inherit;
+      line-height: 1.2;
+      letter-spacing: -0.03em; }
+    body #content h1, body #content h1.documentFirstHeading {
+      margin-top: 0;
+      font-size: 2.369em;
+      font-weight: bold; }
+    body #content h2 {
+      font-size: 1.777em; }
+    body #content h3 {
+      font-size: 1.333em; }
+    body #content h4 {
+      font-size: 1.125em; }
+    body #content small, body #content .font_small {
+      font-size: 0.75em; }
+    body #content h2 {
+      border-bottom: 1px solid #CCCCCC;
+      margin-bottom: 0.5em; }
+    body #content div.listingBar a:hover {
+      background-color: #F6F6F6;
+      border-color: #75ad0a; }
 
-body.template-plone_site_view #visual-portal-wrapper #portal-breadcrumbs {
+body.template-plone_site_view #portal-breadcrumbs {
   display: none; }
-body.template-plone_site_view #visual-portal-wrapper #content-core .listItem {
+
+body.template-plone_site_view #visual-portal-wrapper #content-core .listItem,
+body.template-atlas_status_summary #visual-portal-wrapper #content-core .listItem {
   margin-top: 0;
   padding-top: 0;
   background-color: transparent;
   border: none; }
-  body.template-plone_site_view #visual-portal-wrapper #content-core .listItem h2 {
+  body.template-plone_site_view #visual-portal-wrapper #content-core .listItem h2, body.template-plone_site_view #visual-portal-wrapper #content-core .listItem h3,
+  body.template-atlas_status_summary #visual-portal-wrapper #content-core .listItem h2,
+  body.template-atlas_status_summary #visual-portal-wrapper #content-core .listItem h3 {
     margin-top: 0; }
 
 #visual-portal-wrapper {
@@ -368,18 +377,20 @@ body[class*="portaltype-atlas_"] h1.documentFirstHeading[data-type]:before {
   content: attr(data-type) ": ";
   font-weight: normal; }
 
-#content-core .product-listing div.listTitle[data-type]:before {
-  content: attr(data-type);
-  font-weight: bold;
-  background-color: #575757;
-  color: white;
-  display: block;
-  padding: 0.25em 0.375em;
-  font-size: 0.75em;
-  margin-bottom: 0.375em;
-  border: 1px solid #666666; }
-#content-core .product-listing .pagination {
-  clear: both; }
+#content-core .product-listing {
+  font-size: 0.875em; }
+  #content-core .product-listing div.listTitle[data-type]:before {
+    content: attr(data-type);
+    font-weight: bold;
+    background-color: #575757;
+    color: white;
+    display: block;
+    padding: 0.25em 0.375em;
+    font-size: 0.75em;
+    margin-bottom: 0.375em;
+    border: 1px solid #666666; }
+  #content-core .product-listing .pagination {
+    clear: both; }
 
 /* Fix the link color */
 #content a:link,
@@ -417,28 +428,32 @@ dl.portlet.portletNavigationTree {
 
 /* CSS for atlas menu controls */
 /* Atlas Review Navigation */
-#content .atlas-filter {
-  margin-bottom: 1em; }
 #content .atlas-item {
   margin-bottom: 1em;
   padding-bottom: 1em;
   border-bottom: 1px dashed #CCCCCC; }
+#content .atlas-filter {
+  margin-bottom: 1em; }
+  #content .atlas-filter label, #content .atlas-filter select, #content .atlas-filter input {
+    vertical-align: middle; }
 #content .atlas-controls .atlas-review-nav {
   background-color: #F6F6F6;
   margin-bottom: 1em;
   border: 1px solid #CCCCCC; }
   #content .atlas-controls .atlas-review-nav ul {
-    font-size: 1em;
+    font-size: 0.875em;
     margin-left: 0;
     display: block; }
     #content .atlas-controls .atlas-review-nav ul li {
       display: inline-block;
       float: left;
       margin-bottom: 0 !important;
-      list-style-type: none; }
+      list-style-type: none;
+      min-width: 3em;
+      text-align: center; }
       #content .atlas-controls .atlas-review-nav ul li a {
         border-bottom: none !important;
-        padding: 0.5em 0.5em;
+        padding: 0.5em 0.375em;
         margin: 0;
         border-left: 1px solid #CCCCCC;
         display: block;

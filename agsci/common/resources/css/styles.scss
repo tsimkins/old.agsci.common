@@ -24,6 +24,8 @@ body {
     }
     
     #content {
+        
+        font-size: 1em;
 
         h1, h1.documentFirstHeading,
         h2, h3, h4 {
@@ -35,15 +37,15 @@ body {
 
         h1, h1.documentFirstHeading, {
           margin-top: 0;
-          font-size: 3.157em;
+          font-size: 2.369em;
           font-weight: bold;
         }
         
-        h2 {font-size: 2.369em;}
+        h2 {font-size: 1.777em;}
         
-        h3 {font-size: 1.777em;}
+        h3 {font-size: 1.333em;}
         
-        h4 {font-size: 1.333em;}
+        h4 {font-size: 1.125em;}
         
         small, .font_small {font-size: 0.75em;}
 
@@ -51,16 +53,27 @@ body {
             border-bottom: 1px solid $item_border;
             margin-bottom: 0.5em;
         }
+        
+        div.listingBar {
+            a:hover {
+                background-color: $item_background;
+                border-color: #75ad0a;                
+            }
+        }
     }
 }
 
 body.template-plone_site_view {
+    #portal-breadcrumbs {
+        display: none;
+    }
+}
+
+body.template-plone_site_view,
+body.template-atlas_status_summary {
 
     #visual-portal-wrapper {
-        #portal-breadcrumbs {
-            display: none;
-        }
-        
+       
         #content-core {
             .listItem {
                 margin-top: 0;
@@ -68,7 +81,7 @@ body.template-plone_site_view {
                 background-color: transparent;
                 border: none;
                 
-                h2 {
+                h2, h3 {
                     margin-top: 0;
                 }
             }
@@ -517,6 +530,8 @@ body[class *= "portaltype-atlas_"] {
 }
 
 #content-core .product-listing {
+    
+    font-size: 0.875em;
 
     div.listTitle[data-type]:before {
         content: attr(data-type);
@@ -601,9 +616,6 @@ dl.portlet.portletNavigationTree {
     /* Atlas Review Navigation */
     
 #content {
-    .atlas-filter {
-        margin-bottom: 1em;
-    }
     
     .atlas-item {
         margin-bottom: 1em;
@@ -611,17 +623,26 @@ dl.portlet.portletNavigationTree {
         border-bottom: 1px dashed $item_border;
     }
 
+    .atlas-filter {
+
+        margin-bottom: 1em;
+
+        label, select, input {
+            vertical-align: middle;
+        }
+    }
+
     .atlas-controls {
     
         .atlas-review-nav {
-        
+
             background-color: $item_background;
             margin-bottom: 1em;
             border: 1px solid $item_border;
-        
+                   
             ul {
         
-                font-size: 1em;
+                font-size: 0.875em;
                 margin-left: 0;
                 display: block;
                 
@@ -630,10 +651,12 @@ dl.portlet.portletNavigationTree {
                     float: left;
                     margin-bottom: 0 !important;
                     list-style-type: none;
+                    min-width: 3em;
+                    text-align: center;
                     
                     a {
                         border-bottom: none !important;
-                        padding: 0.5em 0.5em;
+                        padding: 0.5em 0.375em;
                         margin: 0;
                         border-left: 1px solid $item_border;
                         display: block;
