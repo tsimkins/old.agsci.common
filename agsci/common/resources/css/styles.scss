@@ -138,6 +138,11 @@ body.template-atlas_status_summary {
             }
         }
 
+        .review-state {
+            line-height: 1.25;
+            margin-top: 1.25em;
+        }
+
         .issue-summary {
             span[class *= "error-check"]:before {
                 content: "\25A0";
@@ -186,6 +191,7 @@ body.template-atlas_status_summary {
                 font-size: 1.25em;
                 margin-top: 0.25em;
                 margin-bottom: 0.125em;
+                line-height: 1.125;
             }
 
             .listTitle a {
@@ -195,6 +201,8 @@ body.template-atlas_status_summary {
             .listDescription {
                 margin-top: 0.25em;
                 margin-bottom: 0.125em;
+                line-height: 1.375;
+                color: #454545
             }
 
             .listLeadImage {
@@ -208,6 +216,23 @@ body.template-atlas_status_summary {
             .listLeadImage a,
             .listLeadImage img {
                 border: none;
+            }
+
+            div.listLeadImage[data-type]:before {
+                content: attr(data-type);
+                font-weight: bold;
+                background-color: #000000;
+                color: #FFFFFF;
+                display: block;
+                padding: 0.125em 0.375em;
+                font-size: 0.9375em;
+                margin-bottom: 0.375em;
+                opacity: 0.9;
+                position: absolute;
+                z-index: 1;
+                left: 0;
+                right: 0;
+                top: 0;
             }
 
             .listLeadImage a {
@@ -416,97 +441,6 @@ body.template-atlas_status_summary {
     }
 }
 
-body.template-all_content,
-body.template-my_content,
-body.portaltype-atlas_article {
-
-    #content-core {
-
-        a.state-expired,
-        a.state-expiring_soon,
-        a.state-imported,
-        a.state-pending,
-        a.state-private,
-        a.state-published,
-        a.state-requires_feedback,
-        a.state-requires_initial_review {
-            color: #205c90 !important;
-            font-size: 1.125em;
-            margin-bottom: 0.125em;
-            display: inline-block;
-        }
-
-        a.state-expired:after,
-        a.state-expiring_soon:after,
-        a.state-imported:after,
-        a.state-pending:after,
-        a.state-private:after,
-        a.state-published:after,
-        a.state-requires_feedback:after,
-        a.state-requires_initial_review:after {
-            color: #FFFFFF;
-            background-color: #000000;
-            padding: 0.25em 0.25em;
-            margin-left: 0.375em;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.875em;
-            -webkit-border-radius: 3px;
-            -moz-border-radius: 3px;
-            border-radius: 3px;
-        }
-
-        a.state-expired:after {
-            content: "Expired";
-            background-color: #575757;
-        }
-
-
-        a.state-expiring_soon:after {
-            content: "Expiring Soon";
-            background-color: #FF0000;
-        }
-
-
-        a.state-imported:after {
-            content: "Imported";
-            background-color: #FFA500;
-        }
-
-
-        a.state-pending:after {
-            content: "Pending Review";
-            background-color: #FFA500;
-        }
-
-
-        a.state-private:after {
-            content: "Private";
-            background-color: #FF0000;
-        }
-
-
-        a.state-published:after {
-            content: "Published";
-            background-color: #575757;
-        }
-
-
-        a.state-requires_feedback:after {
-            content: "Requires Feedback";
-            background-color: #FF0000;
-        }
-
-
-        a.state-requires_initial_review:after {
-            content: "Requires Initial Review";
-            background-color: #FF0000;
-        }
-    }
-
-
-}
-
 /* Override the embiggening for the Title field in a data grid */
 
 #content .field .datagridwidget-cell input[type="text"] {
@@ -533,16 +467,20 @@ body[class *= "portaltype-atlas_"] {
     
     font-size: 0.875em;
 
-    div.listTitle[data-type]:before {
-        content: attr(data-type);
+    div.listTitle[data-status]:after {
+        content: attr(data-status);
+    }
+
+    div.listTitle[data-review_state]:after {
+        background-color: red;
+        font-size: 1em * (0.85/1.25);
+        color: #FFFFFF;
         font-weight: bold;
-        background-color: #575757;
-        color: white;
-        display: block;
-        padding: 0.25em 0.375em;
-        font-size: 0.75em;
-        margin-bottom: 0.375em;
-        border: 1px solid #666666;
+        display: inline-block;
+        padding: 0 0.125em;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
     }
 
     .pagination {
@@ -559,6 +497,40 @@ dl.portlet a:link {
 
 .state-published {
     color: $link_color !important;
+}
+
+.review-state {
+    
+    span {
+        font-weight: bold;
+    }
+    
+    .state-expired {
+        color: #333333 !important;
+    }
+    
+    .state-expiring_soon {
+        color: #FF0000;
+    }
+    
+    .state-pending {
+        color: #ffa500;
+    }
+    
+    .state-private {
+        color: #FF0000;
+    }
+    
+    .state-published {
+        color: #75ad0a !important;
+    }
+    .state-requires_feedback {
+        color: #FF0000;
+    }
+    
+    .state-requires_initial_review {
+        color: #FF0000;
+    }
 }
 
 /* Navigation Tree Styles */

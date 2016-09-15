@@ -77,6 +77,9 @@ body.template-atlas_status_summary #visual-portal-wrapper #content-core .listIte
       #visual-portal-wrapper #content-core li a[data-type]:before {
         content: attr(data-type) ": ";
         font-weight: bold; }
+    #visual-portal-wrapper #content-core .review-state {
+      line-height: 1.25;
+      margin-top: 1.25em; }
     #visual-portal-wrapper #content-core .issue-summary span[class*="error-check"]:before {
       content: "\25A0";
       font-size: 1.25em; }
@@ -106,12 +109,15 @@ body.template-atlas_status_summary #visual-portal-wrapper #content-core .listIte
         font-weight: bold;
         font-size: 1.25em;
         margin-top: 0.25em;
-        margin-bottom: 0.125em; }
+        margin-bottom: 0.125em;
+        line-height: 1.125; }
       #visual-portal-wrapper #content-core .listItem .listTitle a {
         border: none; }
       #visual-portal-wrapper #content-core .listItem .listDescription {
         margin-top: 0.25em;
-        margin-bottom: 0.125em; }
+        margin-bottom: 0.125em;
+        line-height: 1.375;
+        color: #454545; }
       #visual-portal-wrapper #content-core .listItem .listLeadImage {
         width: 100%;
         height: 0;
@@ -121,6 +127,21 @@ body.template-atlas_status_summary #visual-portal-wrapper #content-core .listIte
       #visual-portal-wrapper #content-core .listItem .listLeadImage a,
       #visual-portal-wrapper #content-core .listItem .listLeadImage img {
         border: none; }
+      #visual-portal-wrapper #content-core .listItem div.listLeadImage[data-type]:before {
+        content: attr(data-type);
+        font-weight: bold;
+        background-color: #000000;
+        color: #FFFFFF;
+        display: block;
+        padding: 0.125em 0.375em;
+        font-size: 0.9375em;
+        margin-bottom: 0.375em;
+        opacity: 0.9;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        top: 0; }
       #visual-portal-wrapper #content-core .listItem .listLeadImage a img {
         position: absolute;
         width: 100%;
@@ -258,109 +279,6 @@ body.template-atlas_status_summary #visual-portal-wrapper #content-core .listIte
       color: #FFD71F;
       content: "\25A0"; }
 
-body.template-all_content #content-core a.state-expired,
-body.template-all_content #content-core a.state-expiring_soon,
-body.template-all_content #content-core a.state-imported,
-body.template-all_content #content-core a.state-pending,
-body.template-all_content #content-core a.state-private,
-body.template-all_content #content-core a.state-published,
-body.template-all_content #content-core a.state-requires_feedback,
-body.template-all_content #content-core a.state-requires_initial_review,
-body.template-my_content #content-core a.state-expired,
-body.template-my_content #content-core a.state-expiring_soon,
-body.template-my_content #content-core a.state-imported,
-body.template-my_content #content-core a.state-pending,
-body.template-my_content #content-core a.state-private,
-body.template-my_content #content-core a.state-published,
-body.template-my_content #content-core a.state-requires_feedback,
-body.template-my_content #content-core a.state-requires_initial_review,
-body.portaltype-atlas_article #content-core a.state-expired,
-body.portaltype-atlas_article #content-core a.state-expiring_soon,
-body.portaltype-atlas_article #content-core a.state-imported,
-body.portaltype-atlas_article #content-core a.state-pending,
-body.portaltype-atlas_article #content-core a.state-private,
-body.portaltype-atlas_article #content-core a.state-published,
-body.portaltype-atlas_article #content-core a.state-requires_feedback,
-body.portaltype-atlas_article #content-core a.state-requires_initial_review {
-  color: #205c90 !important;
-  font-size: 1.125em;
-  margin-bottom: 0.125em;
-  display: inline-block; }
-body.template-all_content #content-core a.state-expired:after,
-body.template-all_content #content-core a.state-expiring_soon:after,
-body.template-all_content #content-core a.state-imported:after,
-body.template-all_content #content-core a.state-pending:after,
-body.template-all_content #content-core a.state-private:after,
-body.template-all_content #content-core a.state-published:after,
-body.template-all_content #content-core a.state-requires_feedback:after,
-body.template-all_content #content-core a.state-requires_initial_review:after,
-body.template-my_content #content-core a.state-expired:after,
-body.template-my_content #content-core a.state-expiring_soon:after,
-body.template-my_content #content-core a.state-imported:after,
-body.template-my_content #content-core a.state-pending:after,
-body.template-my_content #content-core a.state-private:after,
-body.template-my_content #content-core a.state-published:after,
-body.template-my_content #content-core a.state-requires_feedback:after,
-body.template-my_content #content-core a.state-requires_initial_review:after,
-body.portaltype-atlas_article #content-core a.state-expired:after,
-body.portaltype-atlas_article #content-core a.state-expiring_soon:after,
-body.portaltype-atlas_article #content-core a.state-imported:after,
-body.portaltype-atlas_article #content-core a.state-pending:after,
-body.portaltype-atlas_article #content-core a.state-private:after,
-body.portaltype-atlas_article #content-core a.state-published:after,
-body.portaltype-atlas_article #content-core a.state-requires_feedback:after,
-body.portaltype-atlas_article #content-core a.state-requires_initial_review:after {
-  color: #FFFFFF;
-  background-color: #000000;
-  padding: 0.25em 0.25em;
-  margin-left: 0.375em;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.875em;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px; }
-body.template-all_content #content-core a.state-expired:after,
-body.template-my_content #content-core a.state-expired:after,
-body.portaltype-atlas_article #content-core a.state-expired:after {
-  content: "Expired";
-  background-color: #575757; }
-body.template-all_content #content-core a.state-expiring_soon:after,
-body.template-my_content #content-core a.state-expiring_soon:after,
-body.portaltype-atlas_article #content-core a.state-expiring_soon:after {
-  content: "Expiring Soon";
-  background-color: #FF0000; }
-body.template-all_content #content-core a.state-imported:after,
-body.template-my_content #content-core a.state-imported:after,
-body.portaltype-atlas_article #content-core a.state-imported:after {
-  content: "Imported";
-  background-color: #FFA500; }
-body.template-all_content #content-core a.state-pending:after,
-body.template-my_content #content-core a.state-pending:after,
-body.portaltype-atlas_article #content-core a.state-pending:after {
-  content: "Pending Review";
-  background-color: #FFA500; }
-body.template-all_content #content-core a.state-private:after,
-body.template-my_content #content-core a.state-private:after,
-body.portaltype-atlas_article #content-core a.state-private:after {
-  content: "Private";
-  background-color: #FF0000; }
-body.template-all_content #content-core a.state-published:after,
-body.template-my_content #content-core a.state-published:after,
-body.portaltype-atlas_article #content-core a.state-published:after {
-  content: "Published";
-  background-color: #575757; }
-body.template-all_content #content-core a.state-requires_feedback:after,
-body.template-my_content #content-core a.state-requires_feedback:after,
-body.portaltype-atlas_article #content-core a.state-requires_feedback:after {
-  content: "Requires Feedback";
-  background-color: #FF0000; }
-body.template-all_content #content-core a.state-requires_initial_review:after,
-body.template-my_content #content-core a.state-requires_initial_review:after,
-body.portaltype-atlas_article #content-core a.state-requires_initial_review:after {
-  content: "Requires Initial Review";
-  background-color: #FF0000; }
-
 /* Override the embiggening for the Title field in a data grid */
 #content .field .datagridwidget-cell input[type="text"] {
   font-family: "Helvetica Neue",​Arial,​FreeSans,​sans-serif;
@@ -379,16 +297,18 @@ body[class*="portaltype-atlas_"] h1.documentFirstHeading[data-type]:before {
 
 #content-core .product-listing {
   font-size: 0.875em; }
-  #content-core .product-listing div.listTitle[data-type]:before {
-    content: attr(data-type);
+  #content-core .product-listing div.listTitle[data-status]:after {
+    content: attr(data-status); }
+  #content-core .product-listing div.listTitle[data-review_state]:after {
+    background-color: red;
+    font-size: 0.68em;
+    color: #FFFFFF;
     font-weight: bold;
-    background-color: #575757;
-    color: white;
-    display: block;
-    padding: 0.25em 0.375em;
-    font-size: 0.75em;
-    margin-bottom: 0.375em;
-    border: 1px solid #666666; }
+    display: inline-block;
+    padding: 0 0.125em;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px; }
   #content-core .product-listing .pagination {
     clear: both; }
 
@@ -399,6 +319,23 @@ dl.portlet a:link {
 
 .state-published {
   color: #114C9A !important; }
+
+.review-state span {
+  font-weight: bold; }
+.review-state .state-expired {
+  color: #333333 !important; }
+.review-state .state-expiring_soon {
+  color: #FF0000; }
+.review-state .state-pending {
+  color: #ffa500; }
+.review-state .state-private {
+  color: #FF0000; }
+.review-state .state-published {
+  color: #75ad0a !important; }
+.review-state .state-requires_feedback {
+  color: #FF0000; }
+.review-state .state-requires_initial_review {
+  color: #FF0000; }
 
 /* Navigation Tree Styles */
 dl.portlet.portletNavigationTree {

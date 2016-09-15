@@ -22,17 +22,19 @@
                     <tal:leadimage
                         condition="view/show_image">
 
-                        <div class="listLeadImage">
-                                <a tal:condition="item/hasLeadImage"
-                                   tal:attributes="href item_url">
-                                    <img tal:replace="structure python:view.getItemLeadImage(item)" />
-                                </a>
+                        <div class="listLeadImage"
+                             tal:attributes="data-type item/Type;">
+
+                            <a tal:condition="item/hasLeadImage"
+                                tal:attributes="href item_url">
+                                <img tal:replace="structure python:view.getItemLeadImage(item)" />
+                            </a>
                         </div>
 
                     </tal:leadimage>
 
                     <div class="listTitle"
-                         tal:attributes="data-type item/Type"
+                         tal:attributes="data-type item/Type;"
                          metal:define-macro="listitem">
 
                         <a href="#"

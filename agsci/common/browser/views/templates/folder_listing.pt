@@ -156,6 +156,13 @@
                          class="listDescription" />
 
                     <metal:issue-summary define-macro="issue_summary">
+
+                        <div class="review-state discreet"
+                            tal:define="review_state item/review_state">
+                                Status:
+                                <span tal:attributes="class string: state-${review_state}" 
+                                      tal:content="python: view.getReviewStatusName(review_state)" />
+                        </div>
                     
                         <div class="issue-summary"
                             tal:define="issues python: view.getIssues(item)"
