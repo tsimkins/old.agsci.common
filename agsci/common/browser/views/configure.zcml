@@ -33,6 +33,24 @@
         />
 
     <browser:page
+        name="folder_listing"
+        for="agsci.person.content.person.IPerson"
+        class=".FolderView"
+        permission="zope2.View"
+        template="templates/folder_listing.pt"
+        layer="..interfaces.IThemeSpecific"
+        />
+
+    <browser:page
+        name="folder_summary_view"
+        for="agsci.person.content.person.IPerson"
+        class=".FolderView"
+        permission="zope2.View"
+        template="templates/folder_summary_view.pt"
+        layer="..interfaces.IThemeSpecific"
+        />
+
+    <browser:page
         name="view"
         for="plone.dexterity.interfaces.IDexterityContainer"
         class=".FolderView"
