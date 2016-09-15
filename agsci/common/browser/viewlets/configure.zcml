@@ -1,0 +1,31 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="agsci.common">
+
+    <!-- Viewlets -->
+
+    <browser:viewlet
+        name="agsci.common.localsearch"
+        class=".LocalSearchViewlet"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        template="templates/localsearch.pt"
+        permission="zope2.View"
+        for="agsci.common.content.behaviors.search.ILocalSearch"
+        layer="..interfaces.IThemeSpecific"
+    />
+
+    <!-- Override the document byline -->
+
+    <browser:viewlet
+        name="plone.belowcontenttitle.documentbyline"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+        class=".DocumentBylineViewlet"
+        permission="zope2.View"
+        template="templates/document_byline.pt"
+        layer="..interfaces.IThemeSpecific"
+    />
+
+</configure>
