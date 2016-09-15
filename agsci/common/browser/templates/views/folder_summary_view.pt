@@ -22,10 +22,9 @@
                     <tal:leadimage
                         condition="view/show_image">
 
-                        <div 
-                            tal:condition="item/hasLeadImage"
-                            class="listLeadImage">
-                                <a tal:attributes="href item_url">
+                        <div class="listLeadImage">
+                                <a tal:condition="item/hasLeadImage"
+                                   tal:attributes="href item_url">
                                     <img tal:replace="structure python:view.getItemLeadImage(item)" />
                                 </a>
                         </div>

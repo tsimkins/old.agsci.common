@@ -51,7 +51,7 @@
             <tal:block tal:define="item_url item/getURL|item/absolute_url;
                                    item_id item/getId|item/id;
                                    item_title_or_id item/pretty_title_or_id;
-                                   item_description item/Description;
+                                   item_description python: view.getTruncatedDescription(item);
                                    item_type item/portal_type;
                                    item_type_title item/Type;
                                    item_modified item/ModificationDate;

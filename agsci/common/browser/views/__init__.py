@@ -20,17 +20,17 @@ except ImportError:
 
 class IFolderView(Interface):
     pass
-    
+
 class FolderView(BrowserView):
 
     implements(IFolderView)
-    
+
     def __init__(self, context, request):
         self.context = context
         self.request = request
-        
+
         self.setHeaders()
-        
+
     def setHeaders(self):
 
         # Prevent from being cached in proxy cache
@@ -55,7 +55,7 @@ class FolderView(BrowserView):
 
     @property
     def _portal_state(self):
-        return getMultiAdapter((self.context, self.request), 
+        return getMultiAdapter((self.context, self.request),
                                 name=u'plone_portal_state')
 
     @property
@@ -83,11 +83,15 @@ class FolderView(BrowserView):
     def same_type(self, arg1, *args):
         return _same_type(arg1, *args)
 
+    # Does this item have a leadimage?
+    def getItemHasLeadImage(self, item):
+        return getattr(item, 'hasLeadImage', False)
+
     def getItemLeadImage(self, item, css_class='leadimage', scale='leadimage_folder'):
-        if getattr(item, 'hasLeadImage', False):
+        if self.getItemHasLeadImage(item):
             return ILeadImage(item.getObject()).tag(css_class=css_class, scale=scale)
         return ''
-        
+
     @property
     def hasTiledContents(self):
         return ITileFolder.providedBy(self.context)
@@ -107,7 +111,7 @@ class FolderView(BrowserView):
     def getItemURL(self, item):
 
         item_type = item.portal_type
-        
+
         if hasattr(item, 'getURL'):
             item_url = item.getURL()
         else:
@@ -140,7 +144,7 @@ class FolderView(BrowserView):
 
     def fileExtensionIcons(self):
         ms_data = ['xls', 'doc', 'ppt']
-    
+
         data = {
             'xls' : u'Microsoft Excel',
             'ppt' : u'Microsoft PowerPoint',
@@ -152,18 +156,18 @@ class FolderView(BrowserView):
             'txt' : u'Plain Text',
             'zip' : u'ZIP Archive',
         }
-        
+
         for ms in ms_data:
             ms_type = data.get(ms, '')
             if ms_type:
                 data['%sx' % ms] = ms_type
-        
+
         return data
-        
+
     def getFileType(self, item):
 
         icon = self.getIcon(item)
-        
+
         if icon:
             icon = icon.split('.')[0]
 
@@ -174,7 +178,7 @@ class FolderView(BrowserView):
         if '.' in url:
             icon = url.strip().lower().split('.')[-1]
             return self.fileExtensionIcons().get(icon, None)
-        
+
         return None
 
     def getItemSize(self, item):
@@ -197,7 +201,7 @@ class FolderView(BrowserView):
         if item.portal_type in ['File',]:
             obj_size = self.getItemSize(item)
             file_type = self.getFileType(item)
-            
+
             if file_type:
                 if obj_size:
                     return u'%s, %s' % (file_type, obj_size)
@@ -217,7 +221,7 @@ class FolderView(BrowserView):
         # Default classes for all views
         item_class = ['listItem',]
 
-        # If "Hide items excluded from navigation" is checked on the folder, 
+        # If "Hide items excluded from navigation" is checked on the folder,
         # and this item is excluded, apply the 'excludeFromNav' class
         if getattr(self.context.aq_base, 'hide_exclude_from_nav', False) and getattr(item, 'exclude_from_nav'):
             item_class.append('excludeFromNav')
@@ -226,6 +230,11 @@ class FolderView(BrowserView):
         if self.show_image:
             item_class.append('listItemLeadImage')
 
+            if self.getItemHasLeadImage(item):
+                item_class.append('listItemHasLeadImage')
+            else:
+                item_class.append('listItemMissingLeadImage')
+
         # Per-layout classes
         if layout == 'folder_summary_view':
 
@@ -233,13 +242,12 @@ class FolderView(BrowserView):
             item_class.append('listItemSummary')
 
         elif layout == 'folder_listing':
-        
+
             if 'excludeFromNav' not in item_class:
                 item_class.append('contenttype-%s' % item.Type.lower())
 
         if self.hasTiledContents:
             item_class.append('list-item-columns-%s' % self.getTileColumns)
-            
 
         return " ".join(item_class)
 
@@ -254,7 +262,7 @@ class FolderView(BrowserView):
         return getattr(self.context, 'tile_folder_columns', '3')
 
     def isEvent(self, item):
-        
+
         if getattr(item, 'getObject', False):
             item = item.getObject()
 
@@ -264,7 +272,7 @@ class FolderView(BrowserView):
     def getUserId(self):
 
         user_id = getattr(self, 'user_id', self.request.form.get('user_id', None))
-        
+
         if user_id:
             return user_id
 
@@ -276,23 +284,40 @@ class FolderView(BrowserView):
         return None
 
     def getFolderContents(self, contentFilter={}):
-        
+
         if self.context.Type() in ['Topic', 'Collection']:
             return self.context.queryCatalog(batch=False, **contentFilter)
-        
+
         return self.context.getFolderContents(contentFilter, batch=False)
-    
+
     def getOwner(self, item=None):
 
         if item:
-            
+
             owners = getattr(item, 'Owners', [])
-            
+
             if owners:
                 return owners[0]
 
 
-        return None 
+        return None
+
+    def getTruncatedDescription(self, item, max_chars=200):
+        el = ' ...'
+
+        description = item.Description
+
+        if description:
+            description = " ".join(description.strip().split())
+
+            if len(description) > max_chars:
+                description = description[:max_chars]
+                _d = description.split()
+                _d.pop()
+                description = " ".join(_d) + el
+                return description
+
+        return ''
 
 
 class Search(_Search):
