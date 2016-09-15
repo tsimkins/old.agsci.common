@@ -179,6 +179,13 @@ body.template-plone_site_view,
 
         }
 
+        /* Provide a placeholder background color for missing leadimages */
+        .listItemMissingLeadImage {
+            .listLeadImage {
+                background-color: $item_border;
+            }
+        }
+
         @for $i from 1 to $max_columns {
             $c: 100/$i;
             $block_width: ($c/100)*$max_width;
@@ -359,7 +366,8 @@ body.template-plone_site_view,
 }
 
 body.template-all_content,
-body.template-my_content {
+body.template-my_content,
+body.portaltype-atlas_article {
 
     #content-core {
 
