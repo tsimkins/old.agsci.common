@@ -122,33 +122,6 @@
                                    class="location"
                                    i18n:name="location">Oslo</span>,
                         </span>
-                        <div tal:condition="show_about">
-
-                            <tal:name tal:condition="item_creator"
-                                tal:define="author python:pas_member.info(item_creator);
-                                            creator_short_form author/username;
-                                            creator_long_form string:?author=${author/username};
-                                            creator_is_openid python:'/' in creator_short_form;
-                                            creator_id python:(creator_short_form, creator_long_form)[creator_is_openid];">
-                              <span i18n:translate="label_by_author">
-                                Owner: 
-                              <a href="#"
-                                 tal:attributes="href string:${navigation_root_url}/author/${item_creator}"
-                                 tal:content="author/name_or_id"
-                                 tal:omit-tag="not:author"
-                                 i18n:name="author">
-                                Bob Dobalina
-                              </a>
-                              </span>
-
-                            </tal:name>
-
-                            <metal:description define-slot="description_slot">
-                                <tal:comment replace="nothing">
-                                    Place custom listing info for custom types here
-                                </tal:comment>
-                            </metal:description>
-                        </div>
                     </div>
 
                     <div tal:condition="item_description"
@@ -158,10 +131,12 @@
                     <metal:issue-summary define-macro="issue_summary">
 
                         <div class="review-state discreet"
-                            tal:define="review_state item/review_state">
+                            tal:define="review_state item/review_state;
+                                        review_state_name python: view.getReviewStatusName(review_state)"
+                            tal:condition="review_state_name">
                                 Status:
                                 <span tal:attributes="class string: state-${review_state}" 
-                                      tal:content="python: view.getReviewStatusName(review_state)" />
+                                      tal:content="review_state_name" />
                         </div>
                     
                         <div class="issue-summary"

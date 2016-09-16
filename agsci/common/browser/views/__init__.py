@@ -339,6 +339,9 @@ class FolderView(BrowserView):
 
             return '<span class="error-check-none"></span>'
 
+    def getReviewStatusName(self, v):
+        return ""
+
 class Search(_Search):
 
     def filter_query(self, query):
