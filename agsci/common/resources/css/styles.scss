@@ -27,6 +27,19 @@ body {
         
         font-size: 1em;
 
+        #viewlet-above-content-title {
+            .portalMessage {
+                font-size: 80%;
+                margin: 0 -0.3125em 0.55em;
+                
+                a,
+                a:link,
+                a:visited {
+                    color: $link_color;
+                }
+            }
+        }
+
         h1, h1.documentFirstHeading,
         h2, h3, h4 {
           margin: 1.414em 0 0.5em;
