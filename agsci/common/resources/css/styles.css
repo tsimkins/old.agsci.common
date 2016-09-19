@@ -193,9 +193,9 @@ body.template-atlas_status_summary #visual-portal-wrapper #content-core .listIte
   #visual-portal-wrapper #content ul.documentDescription li {
     list-style-type: none; }
   #visual-portal-wrapper #portal-column-content .documentEditable .cascade-select select {
-    font-size: 1em;
+    font-size: 0.875em;
     padding: 0.125em 0.375em;
-    margin: 0 0.375em; }
+    margin: 0; }
     #visual-portal-wrapper #portal-column-content .documentEditable .cascade-select select optgroup {
       font-weight: bold;
       color: black;
