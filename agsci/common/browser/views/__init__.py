@@ -10,7 +10,7 @@ from agsci.leadimage.interfaces import ILeadImageMarker as ILeadImage
 from agsci.common.content.behaviors.container import ITileFolder
 from plone.app.search.browser import Search as _Search
 from plone.app.search.browser import  quote_chars
-from plone.memoize.instance import memoize
+from plone.memoize.view import memoize
 from Products.CMFPlone.browser.navtree import getNavigationRoot
 
 try:
